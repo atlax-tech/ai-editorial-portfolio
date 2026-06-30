@@ -1,4 +1,4 @@
-import { MailIcon, MapPinIcon } from "./icons.jsx";
+import { MailIcon, PhoneIcon, MapPinIcon } from "./icons.jsx";
 
 export function AboutSection({ data }) {
   return (
@@ -44,10 +44,13 @@ export function AboutSection({ data }) {
       </div>
 
       <div className="contact-line" aria-label="联系方式">
-        <strong>联系 / CONTACT</strong>
         <a href={`mailto:${data.contact.email}`}>
           <MailIcon />
           {data.contact.email}
+        </a>
+        <a href={`tel:${data.contact.phone.replace(/\s/g, "")}`}>
+          <PhoneIcon />
+          {data.contact.phone}
         </a>
         <a href={data.contact.socialUrl}>
           <span className="text-mark">{data.contact.socialMark}</span>

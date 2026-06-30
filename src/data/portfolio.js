@@ -1,8 +1,8 @@
 export const portfolio = {
   meta: {
-    name: "AI Product Observer",
-    owner: "Qilong Lu",
-    role: "产品观察者 / 技术转译者 / 主题策划",
+    name: "AtlaxTech / AI 产品实验室",
+    owner: "Qilong Lu / 路启隆",
+    role: "独立开发者 / AI 产品观察与内容实验",
     year: "2026",
     language: "CN / EN",
   },
@@ -338,11 +338,12 @@ export const portfolio = {
       },
     ],
     contact: {
-      email: "mail@example.com",
-      social: "小红书 / @yourname",
-      socialMark: "RED",
-      socialUrl: "https://www.xiaohongshu.com/user/profile/your-id",
-      location: "Shenzhen, China",
+      email: "atlax-tech@outlook.com",
+      phone: "+86 199 0373 3819",
+      social: "@Atlax-Tech",
+      socialMark: "XHS",
+      socialUrl: "https://www.xiaohongshu.com/user/profile/5f6822260000000001009125",
+      location: "Xi'an, China",
     },
   },
 };

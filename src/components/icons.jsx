@@ -16,6 +16,14 @@ export function MailIcon() {
   );
 }
 
+export function PhoneIcon() {
+  return (
+    <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+      <path d="M5.2 2.7a2 2 0 0 1 2.7.8l1 1.6a2 2 0 0 1-.3 2.4l-.8.8c.6 1.4 1.6 2.6 3 3.6l.8-.8a2 2 0 0 1 2.4-.3l1.6 1a2 2 0 0 1 .8 2.7l-1 1.6a2 2 0 0 1-1.9.9c-3.2-.4-6.2-2-8.4-4.3C3 10 1.4 7 1 3.8a2 2 0 0 1 .9-1.9l1.6-1Z" />
+    </svg>
+  );
+}
+
 export function MapPinIcon() {
   return (
     <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">

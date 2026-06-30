@@ -1,4 +1,6 @@
-export function Header({ meta, navItems }) {
+export function Header({ meta, navItems, theme, onToggleTheme }) {
+  const nextTheme = theme === "light" ? "dark" : "light";
+
   return (
     <header className="site-header">
       <a className="brand" href="#index" aria-label="返回首页">
@@ -27,6 +29,19 @@ export function Header({ meta, navItems }) {
         <span>{meta.year}</span>
         <span>{meta.language}</span>
       </div>
+
+      <button
+        className="theme-toggle"
+        type="button"
+        onClick={onToggleTheme}
+        aria-label={`切换到 ${nextTheme} mode`}
+        aria-pressed={theme === "dark"}
+      >
+        <span className="theme-toggle__icon" aria-hidden="true">
+          <span />
+        </span>
+        <span>{theme === "light" ? "LIGHT" : "DARK"}</span>
+      </button>
     </header>
   );
 }
