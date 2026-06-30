@@ -56,7 +56,7 @@ export function ArchivePage() {
             <div className="archive-list__head">
               <span>笔记 / 标题</span>
               <span>类型 / 状态</span>
-              <span>日期</span>
+              <span>研究窗口</span>
               <span>摘要</span>
             </div>
             {notes.items.map((item) => (
@@ -74,7 +74,7 @@ export function ArchivePage() {
                   <strong>{item.type}</strong>
                   <span>{item.status}</span>
                 </div>
-                <time>{item.day}</time>
+                <time>{item.researchWindow}</time>
                 <p>{item.tags.join(" · ")}</p>
                 <span className="archive-row__arrow" aria-hidden="true">
                   <ArrowIcon />

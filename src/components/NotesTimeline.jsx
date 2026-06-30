@@ -39,15 +39,15 @@ export function NotesTimeline({ data }) {
       <div className="notes__main">
         <div className="notes__topline">
           <strong>{activeMonth}</strong>
-          <span>{visibleNotes.length} 条记录</span>
+          <span>Research Window · {visibleNotes.length} 条记录</span>
         </div>
 
         <div className="timeline-list">
           {visibleNotes.map((note) => (
             <article className="timeline-item" key={note.id}>
               <div className="timeline-item__date">
-                <strong>{note.day}</strong>
-                <span>{note.weekday}</span>
+                <strong>{note.researchWindow.split("/").at(-1).trim()}</strong>
+                <span>RESEARCH</span>
               </div>
               <div className="timeline-item__dot" aria-hidden="true" />
               <div className="timeline-item__content">
@@ -55,7 +55,7 @@ export function NotesTimeline({ data }) {
                   <Link to={`/notes/${note.slug}`}>{note.title}</Link>
                 </h3>
                 <p>{note.summary}</p>
-                <span>{note.tags.join(" · ")}</span>
+                <span>{note.status} · {note.tags.join(" · ")}</span>
               </div>
               <dl className="timeline-item__annotation">
                 <dt>METHOD</dt>

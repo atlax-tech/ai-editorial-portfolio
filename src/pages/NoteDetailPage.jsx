@@ -32,7 +32,7 @@ export function NoteDetailPage() {
 
         <header className="detail-header">
           <p className="detail-header__id">
-            {note.month} · {note.day}
+            RESEARCH WINDOW · {note.researchWindow}
           </p>
           <h1>{note.title}</h1>
           <p className="detail-header__subtitle">{note.summary}</p>
