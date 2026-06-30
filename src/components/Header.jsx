@@ -1,9 +1,13 @@
+import { Link, useLocation } from "react-router-dom";
+
 export function Header({ meta, navItems, theme, onToggleTheme }) {
+  const location = useLocation();
+  const isHome = location.pathname === "/";
   const nextTheme = theme === "light" ? "dark" : "light";
 
   return (
     <header className="site-header">
-      <a className="brand" href="#index" aria-label="返回首页">
+      <Link className="brand" to={isHome ? "#index" : "/"} aria-label="返回首页">
         <span className="brand-mark" aria-hidden="true">
           <span className="brand-mark__letters">QL</span>
           <span className="brand-mark__scan" />
@@ -14,15 +18,19 @@ export function Header({ meta, navItems, theme, onToggleTheme }) {
           <strong>{meta.name}</strong>
           <small>{meta.role}</small>
         </span>
-      </a>
+      </Link>
 
       <nav className="top-nav" aria-label="主要导航">
         {navItems.map((item) => (
-          <a key={item.id} href={`#${item.id}`}>
+          <Link key={item.id} to={`/#${item.id}`}>
             <span>{item.number}</span>
             {item.label}
-          </a>
+          </Link>
         ))}
+        <Link to="/archive">
+          <span>05</span>
+          ARCHIVE
+        </Link>
       </nav>
 
       <div className="header-meta" aria-label="站点信息">

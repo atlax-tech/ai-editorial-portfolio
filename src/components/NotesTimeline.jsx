@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { ArrowIcon } from "./icons.jsx";
 
 export function NotesTimeline({ data }) {
@@ -50,7 +51,9 @@ export function NotesTimeline({ data }) {
               </div>
               <div className="timeline-item__dot" aria-hidden="true" />
               <div className="timeline-item__content">
-                <h3>{note.title}</h3>
+                <h3>
+                  <Link to={`/notes/${note.slug}`}>{note.title}</Link>
+                </h3>
                 <p>{note.summary}</p>
                 <span>{note.tags.join(" · ")}</span>
               </div>
@@ -62,9 +65,9 @@ export function NotesTimeline({ data }) {
                 <dt>QUESTION</dt>
                 <dd>{note.question}</dd>
               </dl>
-              <a href="#about" aria-label={`查看 ${note.title}`}>
+              <Link to={`/notes/${note.slug}`} aria-label={`查看 ${note.title}`}>
                 <ArrowIcon />
-              </a>
+              </Link>
             </article>
           ))}
         </div>

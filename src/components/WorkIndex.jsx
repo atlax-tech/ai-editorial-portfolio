@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { ArrowIcon } from "./icons.jsx";
 
 export function WorkIndex({ data }) {
@@ -47,7 +48,8 @@ export function WorkIndex({ data }) {
         </div>
 
         {visibleItems.map((item) => (
-          <article
+          <Link
+            to={`/work/${item.slug}`}
             className={item.featured ? "archive-row is-featured" : "archive-row"}
             key={item.id}
           >
@@ -62,7 +64,10 @@ export function WorkIndex({ data }) {
             </div>
             <time>{item.time}</time>
             <p>{item.summary}</p>
-          </article>
+            <span className="archive-row__arrow" aria-hidden="true">
+              <ArrowIcon />
+            </span>
+          </Link>
         ))}
       </div>
 

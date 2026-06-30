@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { Header } from "./components/Header.jsx";
 import { Hero } from "./components/Hero.jsx";
 import { WorkIndex } from "./components/WorkIndex.jsx";
 import { NotesTimeline } from "./components/NotesTimeline.jsx";
 import { AboutSection } from "./components/AboutSection.jsx";
 import { Footer } from "./components/Footer.jsx";
+import { ArchivePage } from "./pages/ArchivePage.jsx";
+import { WorkDetailPage } from "./pages/WorkDetailPage.jsx";
+import { NoteDetailPage } from "./pages/NoteDetailPage.jsx";
 import { portfolio } from "./data/portfolio.js";
 
 const getInitialTheme = () => {
@@ -14,6 +18,34 @@ const getInitialTheme = () => {
 
   return window.localStorage.getItem("portfolio-theme") ?? "light";
 };
+
+function ScrollToHash() {
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      const element = document.getElementById(hash.slice(1));
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [pathname, hash]);
+
+  return null;
+}
+
+function HomePage() {
+  return (
+    <main>
+      <Hero data={portfolio.hero} navItems={portfolio.navItems} />
+      <WorkIndex data={portfolio.work} />
+      <NotesTimeline data={portfolio.notes} />
+      <AboutSection data={portfolio.about} />
+    </main>
+  );
+}
 
 export default function App() {
   const [theme, setTheme] = useState(getInitialTheme);
@@ -29,18 +61,19 @@ export default function App() {
 
   return (
     <>
+      <ScrollToHash />
       <Header
         meta={portfolio.meta}
         navItems={portfolio.navItems}
         theme={theme}
         onToggleTheme={toggleTheme}
       />
-      <main>
-        <Hero data={portfolio.hero} navItems={portfolio.navItems} />
-        <WorkIndex data={portfolio.work} />
-        <NotesTimeline data={portfolio.notes} />
-        <AboutSection data={portfolio.about} />
-      </main>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/archive" element={<ArchivePage />} />
+        <Route path="/work/:slug" element={<WorkDetailPage />} />
+        <Route path="/notes/:slug" element={<NoteDetailPage />} />
+      </Routes>
       <Footer meta={portfolio.meta} />
     </>
   );
