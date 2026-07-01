@@ -12,6 +12,7 @@ import ragIsNotAMagicMemory from "./notes/rag-is-not-a-magic-memory.js";
 import karpathyLlmWikiAndPersonalKnowledgeBase from "./notes/karpathy-llm-wiki-and-personal-knowledge-base.js";
 import aiBubbleUsDebtCrisis2008 from "./notes/ai-bubble-us-debt-crisis-2008.js";
 import knowledgeBaseIsNotWarehouse from "./notes/knowledge-base-is-not-warehouse.js";
+import openclawControlAndAssetDefense from "./notes/openclaw-control-and-asset-defense.js";
 
 export const noteContent = {
   "demo-is-not-product": demoIsNotProduct,
@@ -28,4 +29,5 @@ export const noteContent = {
   "karpathy-llm-wiki-and-personal-knowledge-base": karpathyLlmWikiAndPersonalKnowledgeBase,
   "ai-bubble-us-debt-crisis-2008": aiBubbleUsDebtCrisis2008,
   "knowledge-base-is-not-warehouse": knowledgeBaseIsNotWarehouse,
+  "openclaw-control-and-asset-defense": openclawControlAndAssetDefense,
 };
