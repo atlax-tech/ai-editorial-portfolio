@@ -1,4 +1,5 @@
 import { ArrowIcon } from "./icons.jsx";
+import { Link } from "react-router-dom";
 
 export function Hero({ data, navItems }) {
   return (
@@ -15,7 +16,10 @@ export function Hero({ data, navItems }) {
       </aside>
 
       <div className="hero__main">
-        <p className="section-count">{data.count}</p>
+        <div className="hero__eyeline">
+          <p className="section-count">{data.count}</p>
+          <span>{data.identity}</span>
+        </div>
         <h1>{data.title}</h1>
         <p className="hero__lead">{data.lead}</p>
         <div className="rule" />
@@ -29,41 +33,54 @@ export function Hero({ data, navItems }) {
             <span>时间 / TIME</span>
           </div>
           {data.entries.map((entry) => (
-            <a className="hero__table-row" href="#work" key={entry.id}>
+            <Link className="hero__table-row" to={`/work/${entry.slug}`} key={entry.id}>
               <span>{entry.id}</span>
               <strong>{entry.title}</strong>
               <span>{entry.type}</span>
               <time>{entry.time}</time>
-            </a>
+            </Link>
           ))}
         </div>
 
-        <a className="text-link" href="#work">
-          查看全部条目
-          <ArrowIcon />
-        </a>
+        <div className="hero__actions" aria-label="主要阅读入口">
+          <a className="hero-action hero-action--primary" href="#work">
+            查看精选项目
+            <ArrowIcon />
+          </a>
+          <Link className="hero-action" to="/notes/ai-model-news-is-not-enough">
+            阅读最新文章
+            <ArrowIcon />
+          </Link>
+          <Link className="hero-action" to="/archive">
+            浏览全部档案
+            <ArrowIcon />
+          </Link>
+        </div>
       </div>
 
-      <aside className="signal-figure" aria-label="非交互方法摘要">
-        <div className="signal-figure__header">
-          <span>FIELD MAP</span>
-          <strong>非交互 · 方法摘要</strong>
+      <aside className="thesis-index" aria-label="个人判断索引">
+        <div className="thesis-index__header">
+          <span>WORKING THESES</span>
+          <strong>判断索引</strong>
         </div>
-        <div className="signal-figure__map" aria-hidden="true">
-          <img src="/assets/signal-field.png" alt="" />
-        </div>
-        <p>
-          这里不是按钮或工具，只是用来概括作品集的观察方法：从产品信号出发，转译技术语境，最后沉淀为可执行的选题判断。
+        <p className="thesis-index__intro">
+          我不把这些句子当结论。它们是每次体验产品、搭建 Demo 和选题时反复验证的工作假设。
         </p>
-        <ol className="signal-steps">
-          {(data.signalSteps ?? []).map((step) => (
-            <li key={step.id}>
-              <span>{step.id}</span>
-              <strong>{step.title}</strong>
-              <em>{step.label}</em>
+        <ol className="thesis-index__list">
+          {(data.theses ?? []).map((thesis) => (
+            <li key={thesis.id} tabIndex="0">
+              <span>{thesis.id}</span>
+              <div>
+                <em>{thesis.label}</em>
+                <strong>{thesis.statement}</strong>
+              </div>
             </li>
           ))}
         </ol>
+        <a className="thesis-index__link" href="#about">
+          了解我的工作方法
+          <ArrowIcon />
+        </a>
       </aside>
     </section>
   );

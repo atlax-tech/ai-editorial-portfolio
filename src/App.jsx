@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { Header } from "./components/Header.jsx";
 import { Hero } from "./components/Hero.jsx";
 import { WorkIndex } from "./components/WorkIndex.jsx";
+import { EditorialPicks } from "./components/EditorialPicks.jsx";
 import { NotesTimeline } from "./components/NotesTimeline.jsx";
 import { AboutSection } from "./components/AboutSection.jsx";
 import { Footer } from "./components/Footer.jsx";
@@ -36,11 +37,53 @@ function ScrollToHash() {
   return null;
 }
 
+function ScrollReveal() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return undefined;
+    }
+
+    let observer;
+    const frame = window.requestAnimationFrame(() => {
+      const sections = document.querySelectorAll(
+        ".section-divider, .detail-section, .editorial-angle-block",
+      );
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-revealed");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.08 },
+      );
+
+      sections.forEach((section) => {
+        section.classList.add("reveal-section");
+        observer.observe(section);
+      });
+
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      observer?.disconnect();
+    };
+  }, [pathname]);
+
+  return null;
+}
+
 function HomePage() {
   return (
     <main>
       <Hero data={portfolio.hero} navItems={portfolio.navItems} />
       <WorkIndex data={portfolio.work} />
+      <EditorialPicks data={portfolio.editorialPicks} notes={portfolio.notes.items} />
       <NotesTimeline data={portfolio.notes} />
       <AboutSection data={portfolio.about} />
     </main>
@@ -62,6 +105,7 @@ export default function App() {
   return (
     <>
       <ScrollToHash />
+      <ScrollReveal />
       <Header
         meta={portfolio.meta}
         navItems={portfolio.navItems}

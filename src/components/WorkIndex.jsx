@@ -1,18 +1,7 @@
-import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowIcon } from "./icons.jsx";
 
 export function WorkIndex({ data }) {
-  const [activeFilter, setActiveFilter] = useState("全部");
-
-  const visibleItems = useMemo(() => {
-    if (activeFilter === "全部") {
-      return data.items;
-    }
-
-    return data.items.filter((item) => item.category === activeFilter);
-  }, [activeFilter, data.items]);
-
   return (
     <section className="work section-shell section-divider" id="work">
       <div className="section-heading">
@@ -23,48 +12,37 @@ export function WorkIndex({ data }) {
         </div>
       </div>
 
-      <div className="filter-row" aria-label="作品筛选">
-        <div className="filter-row__group">
-          {data.filters.map((filter) => (
-            <button
-              type="button"
-              key={filter}
-              className={filter === activeFilter ? "is-active" : ""}
-              onClick={() => setActiveFilter(filter)}
-            >
-              {filter}
-            </button>
-          ))}
-        </div>
-        <span>{visibleItems.length} entries</span>
+      <div className="concepts-topline">
+        <span>SELECTED / 03</span>
+        <p>PRODUCT CONCEPTS · EDITORIAL PROTOTYPES · VISUAL PROTOTYPES</p>
       </div>
 
-      <div className="archive-list" aria-live="polite">
-        <div className="archive-list__head">
-          <span>项目 / 标题</span>
-          <span>分类 / 角色</span>
-          <span>时间</span>
-          <span>摘要</span>
+      <div className="concept-list">
+        <div className="concept-list__head">
+          <span>项目 / PROJECT</span>
+          <span>类型与状态 / TYPE</span>
+          <span>产品定位 / POSITIONING</span>
+          <span>编辑角度 / EDITORIAL ANGLE</span>
         </div>
 
-        {visibleItems.map((item) => (
+        {data.items.map((item) => (
           <Link
             to={`/work/${item.slug}`}
-            className={item.featured ? "archive-row is-featured" : "archive-row"}
+            className="concept-row"
             key={item.id}
           >
-            <div className="archive-row__title">
+            <div className="concept-row__title">
               <span>{item.id}</span>
               <h3>{item.title}</h3>
               <p>{item.subtitle}</p>
             </div>
-            <div>
+            <div className="concept-row__meta">
               <strong>{item.categoryEn}</strong>
-              <span>{item.category}</span>
+              <span>{item.status}</span>
             </div>
-            <time>{item.time}</time>
-            <p>{item.summary}</p>
-            <span className="archive-row__arrow" aria-hidden="true">
+            <p className="concept-row__positioning">{item.positioning}</p>
+            <p className="concept-row__angle">{item.editorialAngle}</p>
+            <span className="concept-row__arrow" aria-hidden="true">
               <ArrowIcon />
             </span>
           </Link>
