@@ -16,11 +16,27 @@ export function AboutSection({ data, navItems }) {
         <p className="section-count">{data.count}</p>
         <h2>{data.title}</h2>
         <p className="label-stack">
-          <span>ABOUT ME</span>
+          <span>{data.label}</span>
         </p>
-        {data.paragraphs.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
-        ))}
+
+        <p className="about__lead">{data.lead}</p>
+
+        <div className="about__bio">
+          {data.bio.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+
+        <blockquote className="about__philosophy">
+          <p>{data.philosophy.quote}</p>
+          <p className="about__philosophy-emphasis">{data.philosophy.emphasis}</p>
+        </blockquote>
+
+        <div className="about__approach">
+          {data.approach.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
       </div>
 
       <div className="about__content">

@@ -7,7 +7,6 @@ export function Hero({ data }) {
       <div className="hero__main">
         <div className="hero__eyeline">
           <p className="section-count">{data.count}</p>
-          <span>{data.identity}</span>
         </div>
         <h1>{data.title}</h1>
         <p className="hero__lead">{data.lead}</p>

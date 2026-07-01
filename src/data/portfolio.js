@@ -22,8 +22,8 @@ export const portfolio = {
 
     entries: [
       { id: "01", slug: "minddock", title: "MindDock", type: "Knowledge IDE", time: "Prototype" },
-      { id: "02", slug: "agentarium", title: "Agentarium", type: "Agent Control", time: "Concept" },
-      { id: "03", slug: "signal-desk", title: "Signal Desk", type: "Editorial System", time: "Concept" },
+      { id: "02", slug: "agentarium", title: "Agentarium", type: "Agent Control", time: "Concept Demo" },
+      { id: "03", slug: "signal-desk", title: "Signal Desk", type: "Editorial System", time: "Concept Demo" },
     ],
     theses: [
       {
@@ -456,12 +456,24 @@ export const portfolio = {
   about: {
     count: "01 / 04",
     title: "关于我",
-    paragraphs: [
-      "我是路启隆，计算机科学背景，做过企业 ERP 后端开发与敏捷交付，有复杂系统开发经验，现在以独立开发者身份经营 AtlaxTech / AI 产品实验室。",
-      "长期体验 AI 产品、开发者工具与 Agent 工作流，也亲手搭过 MindDock、Agentarium 等概念原型。这让我能在技术实现、产品体验和用户场景之间做判断与转译。",
-      "我关心的不是 AI 概念看起来有多强，而是谁会用、怎么用、能不能持续用，以及人如何验收它做得对不对。",
+    label: "ABOUT ME",
+    lead: "Hi ：》我是路启隆。欢迎来看我的主页。",
+    bio: [
+      "我毕业于阿德莱德大学（Adelaide University）计算机科学专业，于 2021 年获得学士学位。",
+      "我做过企业 ERP 后端开发与敏捷交付，有复杂系统开发经验。现在以独立开发者身份经营 ATLAX-TECH / AI 资讯研究所。",
+      "我对科技圈的新鲜事物有强烈好奇心，喜欢尝试新工具与新方法。但我不是信仰者，更关注实际效果与用户价值。",
+    ],
+    philosophy: {
+      quote: "我认为最好的技术应该具有人的温度。科技的发展，应该让用户感受不到科技的存在。",
+      emphasis:
+        "我关心的不是 AI 概念看起来有多强，而是谁会用、怎么用、能不能持续用，以及人如何验收它做得对不对。",
+    },
+    approach: [
+      "我体验过各种热门 AI 产品与 Agent 工作流，也亲手搭过自己的概念产品原型。这让我能在技术实现、产品体验和用户场景之间做更精准的判断与转译。",
       "我习惯把「看起来很强」的 AI 概念拆成可验证的问题：谁会用、怎么用、能不能持续用、出错时如何叫停与回滚。",
       "我的优势是既能理解复杂系统与代码边界，也能站在读者和用户视角做内容表达——把技术变化转译成可判断、可传播、可行动的产品叙事。",
+      "花径不曾缘客扫，蓬门今始为君开",
+      "到这儿，若您有了一点点的兴趣，欢迎继续下滑看到更多的我。",
     ],
     capabilities: [
       {

@@ -624,6 +624,7 @@ h1 {
   font-size: clamp(2.4rem, 5vw, 5.4rem);
   line-height: 1.04;
   font-weight: 760;
+  white-space: nowrap;
 }
 
 .section-heading h2 {
@@ -890,7 +891,62 @@ h1 {
 }
 
 .about__intro p:not(.section-count):last-child {
-  margin-top: 18px;
+  margin-top: 0;
+}
+
+.about__lead {
+  margin-bottom: clamp(18px, 2.4vw, 28px);
+  font-size: clamp(1.05rem, 1.25vw, 1.2rem);
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.about__bio,
+.about__approach {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 1.6vw, 20px);
+}
+
+.about__bio p,
+.about__approach p {
+  font-size: clamp(0.86rem, 1.05vw, 0.98rem);
+  line-height: 1.75;
+  color: var(--body-copy);
+}
+
+.about__bio {
+  margin-bottom: clamp(24px, 3vw, 36px);
+  padding-bottom: clamp(24px, 3vw, 36px);
+  border-bottom: 1px solid var(--line);
+}
+
+.about__approach {
+  margin-top: clamp(24px, 3vw, 36px);
+  padding-top: clamp(24px, 3vw, 36px);
+  border-top: 1px solid var(--line);
+}
+
+.about__philosophy {
+  margin: 0;
+  padding: clamp(20px, 2.6vw, 30px) clamp(22px, 3vw, 34px);
+  border-left: 3px solid var(--accent);
+  background: var(--surface);
+  border-radius: 0 10px 10px 0;
+}
+
+.about__philosophy p {
+  max-width: 100%;
+  margin: 0;
+  font-size: clamp(0.92rem, 1.12vw, 1.05rem);
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.about__philosophy-emphasis {
+  margin-top: 12px !important;
+  font-style: italic;
+  color: var(--accent) !important;
 }
 
 .about__content {
