@@ -82,9 +82,21 @@ export function Header({ meta, navItems, theme, onToggleTheme }) {
     }
   }, [location.hash, isHome, navItems]);
 
+  const handleBrandClick = (event) => {
+    if (isHome) {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <header className="site-header">
-      <Link className="brand" to={isHome ? "#index" : "/"} aria-label="返回首页">
+      <Link
+        className="brand"
+        to="/"
+        onClick={handleBrandClick}
+        aria-label="返回首页"
+      >
         <span className="brand-mark" aria-hidden="true">
           <span className="brand-mark__letters">QL</span>
           <span className="brand-mark__scan" />
