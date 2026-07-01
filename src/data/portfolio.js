@@ -1,6 +1,6 @@
 export const portfolio = {
   meta: {
-    name: "AtlaxTech / AI 产品实验室",
+    name: "ATLAX-TECH / AI 资讯研究所",
     owner: "Qilong Lu / 路启隆",
     role: "AI 方向编辑 / AI 产品体验",
     year: "2026",
@@ -9,8 +9,8 @@ export const portfolio = {
   navItems: [
     { id: "about", number: "01", label: "ABOUT", title: "关于我" },
     { id: "index", number: "02", label: "O-VIEW", title: "AI 工作流" },
-    { id: "work", number: "03", label: "WORK", title: "作品索引" },
-    { id: "notes", number: "04", label: "NOTES", title: "观察笔记" },
+    { id: "notes", number: "03", label: "NOTES", title: "观察笔记" },
+    { id: "work", number: "04", label: "WORK", title: "作品索引" },
   ],
   hero: {
     count: "02 / 04",
@@ -67,10 +67,10 @@ export const portfolio = {
     ],
   },
   work: {
-    count: "03 / 04",
-    title: "Product Concepts",
+    count: "04 / 04",
+    title: "产品概念",
     description:
-      "Three product experiments around AI workflow, agent control and editorial judgment.",
+      "围绕 AI 工作流、Agent 控制与编辑判断的三个产品实验。",
     filters: ["全部"],
     items: [
       {
@@ -175,7 +175,7 @@ export const portfolio = {
     ],
   },
   notes: {
-    count: "04 / 04",
+    count: "03 / 04",
     title: "观察笔记",
     description: "围绕 AI 产品、工作流与知识系统沉淀的研究笔记、待发布草稿与公开文章。",
     months: [

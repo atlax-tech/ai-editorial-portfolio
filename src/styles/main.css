@@ -607,9 +607,14 @@ h1 {
 
 .section-heading {
   display: grid;
-  grid-template-columns: 170px minmax(0, 1fr);
-  gap: clamp(36px, 8vw, 124px);
-  margin-bottom: clamp(32px, 5vw, 70px);
+  grid-template-columns: minmax(260px, 0.7fr) minmax(300px, 1fr);
+  gap: clamp(40px, 8vw, 130px);
+  align-items: end;
+  margin-bottom: clamp(40px, 6vw, 78px);
+}
+
+.section-heading .section-count {
+  margin: 0 0 12px;
 }
 
 .section-heading h2,
@@ -621,11 +626,18 @@ h1 {
   font-weight: 760;
 }
 
-.section-heading p:last-child,
+.section-heading h2 {
+  margin-bottom: 0;
+}
+
+.section-heading > p,
 .notes__rail > p:last-of-type,
 .about__intro p {
+  max-width: 680px;
+  margin: 0;
   color: var(--body-copy);
-  line-height: 1.85;
+  font-size: clamp(1rem, 1.3vw, 1.3rem);
+  line-height: 1.8;
 }
 
 .filter-row {
@@ -1067,9 +1079,13 @@ h1 {
 
   .hero,
   .notes,
-  .about,
+  .about {
+    grid-template-columns: 1fr;
+  }
+
   .section-heading {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
 
   .hero {
@@ -1115,10 +1131,6 @@ h1 {
 
   .signal-figure {
     grid-column: 1;
-  }
-
-  .section-heading {
-    gap: 0;
   }
 
   .filter-row {

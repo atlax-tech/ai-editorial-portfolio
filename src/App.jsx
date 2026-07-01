@@ -84,9 +84,9 @@ function HomePage() {
     <main>
       <AboutSection data={portfolio.about} navItems={portfolio.navItems} />
       <Hero data={portfolio.hero} />
-      <WorkIndex data={portfolio.work} />
       <EditorialPicks data={portfolio.editorialPicks} notes={portfolio.notes.items} />
       <NotesTimeline data={portfolio.notes} />
+      <WorkIndex data={portfolio.work} />
       <ContactLine contact={portfolio.about.contact} />
     </main>
   );

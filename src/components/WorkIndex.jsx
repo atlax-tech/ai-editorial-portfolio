@@ -4,17 +4,16 @@ import { ArrowIcon } from "./icons.jsx";
 export function WorkIndex({ data }) {
   return (
     <section className="work section-shell section-divider" id="work">
-      <div className="section-heading">
-        <p className="section-count">{data.count}</p>
+      <header className="section-heading">
         <div>
+          <p className="section-count">{data.count}</p>
           <h2>{data.title}</h2>
-          <p>{data.description}</p>
         </div>
-      </div>
+        <p>{data.description}</p>
+      </header>
 
       <div className="concepts-topline">
         <span>SELECTED / 03</span>
-        <p>PRODUCT CONCEPTS · EDITORIAL PROTOTYPES · VISUAL PROTOTYPES</p>
       </div>
 
       <div className="concept-list">

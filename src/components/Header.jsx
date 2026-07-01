@@ -1,25 +1,86 @@
 import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export function Header({ meta, navItems, theme, onToggleTheme }) {
   const location = useLocation();
   const isHome = location.pathname === "/";
   const nextTheme = theme === "light" ? "dark" : "light";
 
-  const activeNavId = (() => {
-    if (isHome) {
-      return location.hash.slice(1) || "index";
+  const [activeNavId, setActiveNavId] = useState(() => {
+    if (!isHome) {
+      if (
+        location.pathname === "/archive" ||
+        location.pathname.startsWith("/work/") ||
+        location.pathname.startsWith("/notes/")
+      ) {
+        return "archive";
+      }
+      return null;
+    }
+    return location.hash.slice(1) || "index";
+  });
+
+  useEffect(() => {
+    if (!isHome) {
+      if (
+        location.pathname === "/archive" ||
+        location.pathname.startsWith("/work/") ||
+        location.pathname.startsWith("/notes/")
+      ) {
+        setActiveNavId("archive");
+      } else {
+        setActiveNavId(null);
+      }
+      return;
     }
 
-    if (
-      location.pathname === "/archive" ||
-      location.pathname.startsWith("/work/") ||
-      location.pathname.startsWith("/notes/")
-    ) {
-      return "archive";
-    }
+    const sectionIds = navItems.map((item) => item.id);
+    const ratios = new Map();
 
-    return null;
-  })();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          ratios.set(entry.target.id, entry.intersectionRatio);
+        });
+
+        let bestId = sectionIds[0];
+        let bestRatio = ratios.get(bestId) || 0;
+
+        sectionIds.forEach((id) => {
+          const ratio = ratios.get(id) || 0;
+          if (ratio > bestRatio) {
+            bestRatio = ratio;
+            bestId = id;
+          }
+        });
+
+        if (bestRatio > 0) {
+          setActiveNavId(bestId);
+        }
+      },
+      {
+        root: null,
+        rootMargin: "-45% 0px -45% 0px",
+        threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
+      },
+    );
+
+    sectionIds.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [isHome, location.pathname, navItems]);
+
+  useEffect(() => {
+    if (isHome && location.hash) {
+      const id = location.hash.slice(1);
+      if (navItems.some((item) => item.id === id)) {
+        setActiveNavId(id);
+      }
+    }
+  }, [location.hash, isHome, navItems]);
 
   return (
     <header className="site-header">
@@ -32,7 +93,6 @@ export function Header({ meta, navItems, theme, onToggleTheme }) {
         </span>
         <span>
           <strong>{meta.name}</strong>
-          <small>{meta.role}</small>
         </span>
       </Link>
 

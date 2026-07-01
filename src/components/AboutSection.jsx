@@ -16,8 +16,7 @@ export function AboutSection({ data, navItems }) {
         <p className="section-count">{data.count}</p>
         <h2>{data.title}</h2>
         <p className="label-stack">
-          <span>ABOUT</span>
-          <span>PROFILE</span>
+          <span>ABOUT ME</span>
         </p>
         {data.paragraphs.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
