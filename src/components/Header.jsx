@@ -5,6 +5,22 @@ export function Header({ meta, navItems, theme, onToggleTheme }) {
   const isHome = location.pathname === "/";
   const nextTheme = theme === "light" ? "dark" : "light";
 
+  const activeNavId = (() => {
+    if (isHome) {
+      return location.hash.slice(1) || "index";
+    }
+
+    if (
+      location.pathname === "/archive" ||
+      location.pathname.startsWith("/work/") ||
+      location.pathname.startsWith("/notes/")
+    ) {
+      return "archive";
+    }
+
+    return null;
+  })();
+
   return (
     <header className="site-header">
       <Link className="brand" to={isHome ? "#index" : "/"} aria-label="返回首页">
@@ -22,12 +38,19 @@ export function Header({ meta, navItems, theme, onToggleTheme }) {
 
       <nav className="top-nav" aria-label="主要导航">
         {navItems.map((item) => (
-          <Link key={item.id} to={`/#${item.id}`}>
+          <Link
+            key={item.id}
+            className={activeNavId === item.id ? "is-active" : undefined}
+            to={`/#${item.id}`}
+          >
             <span>{item.number}</span>
             {item.label}
           </Link>
         ))}
-        <Link to="/archive">
+        <Link
+          className={activeNavId === "archive" ? "is-active" : undefined}
+          to="/archive"
+        >
           <span>05</span>
           ARCHIVE
         </Link>

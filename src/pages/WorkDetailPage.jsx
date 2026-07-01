@@ -1,16 +1,13 @@
 import { useParams, Link } from "react-router-dom";
 import { portfolio } from "../data/portfolio.js";
-import { workContent } from "../content/index.js";
 import { BackLink } from "../components/BackLink.jsx";
-import { ScreenshotPlaceholder } from "../components/ScreenshotPlaceholder.jsx";
 import { NotFoundState } from "../components/NotFoundState.jsx";
 
 export function WorkDetailPage() {
   const { slug } = useParams();
   const work = portfolio.work.items.find((item) => item.slug === slug);
-  const content = workContent[slug];
 
-  if (!work || !content) {
+  if (!work) {
     return (
       <main className="page-shell">
         <section className="detail-page section-shell section-divider">
@@ -55,22 +52,6 @@ export function WorkDetailPage() {
           </dl>
         </header>
 
-        <div className="detail-body">
-          {content.detailSections.map((section) => (
-            <section className="detail-section" key={section.title}>
-              <h2>{section.title}</h2>
-              {section.paragraphs.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
-            </section>
-          ))}
-        </div>
-
-        <section className="detail-section">
-          <h2>Screenshots</h2>
-          <ScreenshotPlaceholder labels={content.screenshots} />
-        </section>
-
         <section className="detail-section related-section">
           <h2>Related notes</h2>
           {relatedNotes.length > 0 ? (
@@ -83,7 +64,7 @@ export function WorkDetailPage() {
               ))}
             </ul>
           ) : (
-            <p className="related-empty">Related notes will be added.</p>
+            <p className="related-empty">暂无相关笔记。</p>
           )}
         </section>
 
