@@ -1,9 +1,20 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowIcon } from "./icons.jsx";
 
 export function NotesTimeline({ data }) {
-  const [activeMonth, setActiveMonth] = useState(data.months[0].value);
+  const validMonths = useMemo(
+    () => data.months.filter((month) => Number(month.count) > 0),
+    [data.months],
+  );
+
+  const [activeMonth, setActiveMonth] = useState(() => validMonths[0]?.value);
+
+  useEffect(() => {
+    if (!validMonths.some((month) => month.value === activeMonth)) {
+      setActiveMonth(validMonths[0]?.value);
+    }
+  }, [validMonths, activeMonth]);
 
   const visibleNotes = useMemo(
     () => data.items.filter((item) => item.month === activeMonth),
@@ -21,19 +32,21 @@ export function NotesTimeline({ data }) {
         </p>
         <p>{data.description}</p>
 
-        <div className="month-index" aria-label="月份索引">
-          {data.months.map((month) => (
-            <button
-              type="button"
-              key={month.value}
-              className={month.value === activeMonth ? "is-active" : ""}
-              onClick={() => setActiveMonth(month.value)}
-            >
-              <span>{month.value}</span>
-              <em>{month.count}</em>
-            </button>
-          ))}
-        </div>
+        {validMonths.length > 0 && (
+          <div className="month-index" aria-label="月份索引">
+            {validMonths.map((month) => (
+              <button
+                type="button"
+                key={month.value}
+                className={month.value === activeMonth ? "is-active" : ""}
+                onClick={() => setActiveMonth(month.value)}
+              >
+                <span>{month.value}</span>
+                <em>{month.count}</em>
+              </button>
+            ))}
+          </div>
+        )}
       </aside>
 
       <div className="notes__main">

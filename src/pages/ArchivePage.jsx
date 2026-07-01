@@ -17,40 +17,6 @@ export function ArchivePage() {
         </div>
 
         <div className="archive-group">
-          <h3 className="archive-group__title">Work</h3>
-          <div className="archive-list" aria-label="作品归档">
-            <div className="archive-list__head">
-              <span>项目 / 标题</span>
-              <span>分类 / 状态</span>
-              <span>时间</span>
-              <span>摘要</span>
-            </div>
-            {work.items.map((item) => (
-              <Link
-                to={`/work/${item.slug}`}
-                className={item.featured ? "archive-row is-featured" : "archive-row"}
-                key={item.slug}
-              >
-                <div className="archive-row__title">
-                  <span>{item.id}</span>
-                  <h3>{item.title}</h3>
-                  <p>{item.subtitle}</p>
-                </div>
-                <div>
-                  <strong>{item.categoryEn}</strong>
-                  <span>{item.status}</span>
-                </div>
-                <time>{item.time}</time>
-                <p>{item.summary}</p>
-                <span className="archive-row__arrow" aria-hidden="true">
-                  <ArrowIcon />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <div className="archive-group">
           <h3 className="archive-group__title">Notes</h3>
           <div className="archive-list" aria-label="笔记归档">
             <div className="archive-list__head">
@@ -76,6 +42,40 @@ export function ArchivePage() {
                 </div>
                 <time>{item.researchWindow}</time>
                 <p>{item.tags.join(" · ")}</p>
+                <span className="archive-row__arrow" aria-hidden="true">
+                  <ArrowIcon />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="archive-group">
+          <h3 className="archive-group__title">Work</h3>
+          <div className="archive-list" aria-label="作品归档">
+            <div className="archive-list__head">
+              <span>项目 / 标题</span>
+              <span>分类 / 状态</span>
+              <span>时间</span>
+              <span>摘要</span>
+            </div>
+            {work.items.map((item) => (
+              <Link
+                to={`/work/${item.slug}`}
+                className={item.featured ? "archive-row is-featured" : "archive-row"}
+                key={item.slug}
+              >
+                <div className="archive-row__title">
+                  <span>{item.id}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.subtitle}</p>
+                </div>
+                <div>
+                  <strong>{item.categoryEn}</strong>
+                  <span>{item.status}</span>
+                </div>
+                <time>{item.time}</time>
+                <p>{item.summary}</p>
                 <span className="archive-row__arrow" aria-hidden="true">
                   <ArrowIcon />
                 </span>

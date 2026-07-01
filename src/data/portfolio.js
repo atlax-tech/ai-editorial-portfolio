@@ -91,19 +91,20 @@ export const portfolio = {
           "我想验证另一种产品心智：用户只需持续输入，系统在合适时机负责归档、连接、提取和提醒输出。",
         ],
         productHypothesis: "如果 AI 不只是等待提问的聊天框，而是嵌入捕捉、整理和输出节点的 Mentor，个人知识库的主动维护成本可以显著下降。",
-        interfaceConcept: "三区工作面：左侧是本地 Vault，中间是文档与 MindView，右侧是仅在关键节点出现的 AI Mentor。",
+        interfaceConcept: "忠于现有桌面端 Demo：左侧管理本地 Vault，中间完成 Markdown 写作与分栏预览，右侧 Platter 承载 Mentor、Inbox 与 Context Pack。",
         editorialAngle: "AI 知识管理产品为什么总是难做？",
         learned: [
           "产品成型带来的正反馈，不能代替用户与市场反馈。",
           "图谱的价值不在于节点多，而在于能否支持提取、复习和再输出。",
           "本地优先与可迁移性是信任设计，不是技术备注。",
         ],
-        currentStatus: "已有接近可用的桌面端 Demo；核心工作流已可表达，商业化假设尚未被验证。",
+        currentStatus: "桌面端 v0.1 已具备可使用的捕获、编辑、预览与 Mentor 工作流；MindView 与知识体检仍属于后续阶段，商业化假设尚未验证。",
         relatedNoteSlugs: ["rag-is-not-a-magic-memory", "karpathy-llm-wiki-and-personal-knowledge-base"],
         screens: [
-          { id: "01", name: "Capture Dock", type: "capture", description: "先接住想法，再建议归属、摘要与关联。" },
-          { id: "02", name: "Knowledge Graph", type: "graph", description: "从文档到主题的可操作知识地图。" },
-          { id: "03", name: "AI Workspace", type: "workspace", description: "基于选中上下文生成可验收的输出。" },
+          { id: "01", name: "Quick Capture", type: "capture", description: "极速记录或由 AI Mentor 追问三轮，先接住想法。" },
+          { id: "02", name: "Split Editor", type: "editor", description: "在同一工作面完成 Markdown 写作、实时预览与本地保存。" },
+          { id: "03", name: "MindView", type: "concept", description: "参考 Obsidian 图谱心智推演的下一阶段概念：聚焦关系，并随时回到源文档。" },
+          { id: "04", name: "Context Pack", type: "output", description: "从本地材料选择上下文，形成有来源、可继续加工的输出。" },
         ],
       },
       {
@@ -179,8 +180,8 @@ export const portfolio = {
     title: "观察笔记",
     description: "围绕 AI 产品、工作流与知识系统沉淀的研究笔记、待发布草稿与公开文章。",
     months: [
-      { value: "2026 / 07", count: "01" },
-      { value: "2026 / 06", count: "03" },
+      { value: "2026 / 07", count: "00" },
+      { value: "2026 / 06", count: "04" },
       { value: "2026 / 05", count: "03" },
       { value: "2026 / 04", count: "02" },
       { value: "2026 / 03", count: "03" },
@@ -258,12 +259,12 @@ export const portfolio = {
         signal: "竞争焦点从单次回答迁移到持续任务",
         question: "一次模型更新究竟改变了哪段真实工作流？",
         sourceLink: "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
-        relatedWorkSlugs: [],
+        relatedWorkSlugs: ["signal-desk"],
       },
       {
         id: "note-05",
         slug: "ai-model-news-is-not-enough",
-        month: "2026 / 07",
+        month: "2026 / 06",
         researchWindow: "2026 / 06",
         publishedAt: "2026-07-01",
         title: "GPT-5.6发布了，然后呢？",
@@ -277,7 +278,7 @@ export const portfolio = {
         question: "这次更新让普通用户多做成了什么，还是只多记住了一个名字？",
         sourceLink:
           "https://www.xiaohongshu.com/explore/6a43f9a5000000001700a63f?app_platform=ios&app_version=9.25&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBteAwjda3YQQ1_SrpUP8-Dv5zvyIwsyW1qkcRqBCmqEQ%3D&author_share=1&xhsshare=CopyLink&shareRedId=N0w4ODU3Nj82NzUyOTgwNjY0OTc9Njg-&apptime=1782841461&share_id=ff070fba9316435796edfaacd014d161",
-        relatedWorkSlugs: [],
+        relatedWorkSlugs: ["signal-desk"],
       },
       {
         id: "note-06",
@@ -294,7 +295,7 @@ export const portfolio = {
         signal: "自主性越高，状态可见与失败回滚越重要",
         question: "一个 Agent 在什么节点必须把决定权还给人？",
         sourceLink: "https://www.anthropic.com/engineering/claude-code-auto-mode",
-        relatedWorkSlugs: [],
+        relatedWorkSlugs: ["agentarium"],
       },
       {
         id: "note-07",
@@ -310,7 +311,7 @@ export const portfolio = {
         signal: "传播速度与产品价值正在被混为一谈",
         question: "热度消失以后，用户还会留下什么？",
         sourceLink: "",
-        relatedWorkSlugs: [],
+        relatedWorkSlugs: ["signal-desk"],
       },
       {
         id: "note-08",
@@ -343,7 +344,7 @@ export const portfolio = {
         signal: "Agent 能力开始取决于模型之外的运行环境",
         question: "当 AI 更能行动时，谁来规定它不能做什么？",
         sourceLink: "https://openai.com/index/harness-engineering/",
-        relatedWorkSlugs: [],
+        relatedWorkSlugs: ["agentarium"],
       },
       {
         id: "note-10",
@@ -377,7 +378,7 @@ export const portfolio = {
         signal: "知识系统的质量由资料治理与检索链路共同决定",
         question: "AI 找到了资料，为什么仍然可能答错？",
         sourceLink: "",
-        relatedWorkSlugs: [],
+        relatedWorkSlugs: ["minddock"],
       },
       {
         id: "note-12",
@@ -394,7 +395,7 @@ export const portfolio = {
         signal: "知识管理从存储转向持续编译与复用",
         question: "被保存的内容，如何真正变成下一次判断的材料？",
         sourceLink: "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f",
-        relatedWorkSlugs: [],
+        relatedWorkSlugs: ["minddock"],
       },
       {
         id: "note-13",
@@ -430,7 +431,7 @@ export const portfolio = {
         signal: "知识库的价值从存储转向持续复用",
         question: "收藏的东西，怎么才能重新进入思考？",
         sourceLink: "",
-        relatedWorkSlugs: ["minddock"],
+        relatedWorkSlugs: [],
       },
       {
         id: "note-15",
@@ -448,7 +449,7 @@ export const portfolio = {
         signal: "Agent 能力越底层，控制设计与资产保护越紧迫",
         question: "当 AI 能真正替你做事时，谁来守住你的资产边界？",
         sourceLink: "",
-        relatedWorkSlugs: ["agentarium"],
+        relatedWorkSlugs: [],
       },
     ],
   },
