@@ -4,16 +4,16 @@ export const portfolio = {
     owner: "Qilong Lu / 路启隆",
     role: "AI 方向编辑 / AI 产品体验",
     year: "2026",
-    language: "CN / EN",
+    language: "CN",
   },
   navItems: [
-    { id: "index", number: "01", label: "INDEX", title: "AI 工作流" },
-    { id: "work", number: "02", label: "WORK", title: "作品索引" },
-    { id: "notes", number: "03", label: "NOTES", title: "观察笔记" },
-    { id: "about", number: "04", label: "ABOUT", title: "关于我" },
+    { id: "about", number: "01", label: "ABOUT", title: "关于我" },
+    { id: "index", number: "02", label: "O-VIEW", title: "AI 工作流" },
+    { id: "work", number: "03", label: "WORK", title: "作品索引" },
+    { id: "notes", number: "04", label: "NOTES", title: "观察笔记" },
   ],
   hero: {
-    count: "01 / 04",
+    count: "02 / 04",
     identity: "路启隆 / AI PRODUCT EDITOR",
     title: "AI 产品观察档案",
     lead: "把复杂技术转译成可判断、可传播、可行动的产品叙事。",
@@ -67,7 +67,7 @@ export const portfolio = {
     ],
   },
   work: {
-    count: "02 / 04",
+    count: "03 / 04",
     title: "Product Concepts",
     description:
       "Three product experiments around AI workflow, agent control and editorial judgment.",
@@ -175,7 +175,7 @@ export const portfolio = {
     ],
   },
   notes: {
-    count: "03 / 04",
+    count: "04 / 04",
     title: "观察笔记",
     description: "围绕 AI 产品、工作流与知识系统沉淀的研究笔记、待发布草稿与公开文章。",
     months: [
@@ -417,11 +417,14 @@ export const portfolio = {
     ],
   },
   about: {
-    count: "04 / 04",
+    count: "01 / 04",
     title: "关于我",
     paragraphs: [
-      "我有复杂系统开发经验，也长期体验 AI 产品、开发者工具与 Agent 工作流。这让我能在技术实现、产品体验和用户场景之间做判断与转译。",
+      "我是路启隆，计算机科学背景，做过企业 ERP 后端开发与敏捷交付，有复杂系统开发经验，现在以独立开发者身份经营 AtlaxTech / AI 产品实验室。",
+      "长期体验 AI 产品、开发者工具与 Agent 工作流，也亲手搭过 MindDock、Agentarium 等概念原型。这让我能在技术实现、产品体验和用户场景之间做判断与转译。",
       "我关心的不是 AI 概念看起来有多强，而是谁会用、怎么用、能不能持续用，以及人如何验收它做得对不对。",
+      "我习惯把「看起来很强」的 AI 概念拆成可验证的问题：谁会用、怎么用、能不能持续用、出错时如何叫停与回滚。",
+      "我的优势是既能理解复杂系统与代码边界，也能站在读者和用户视角做内容表达——把技术变化转译成可判断、可传播、可行动的产品叙事。",
     ],
     capabilities: [
       {

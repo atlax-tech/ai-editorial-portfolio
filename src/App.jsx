@@ -6,6 +6,7 @@ import { WorkIndex } from "./components/WorkIndex.jsx";
 import { EditorialPicks } from "./components/EditorialPicks.jsx";
 import { NotesTimeline } from "./components/NotesTimeline.jsx";
 import { AboutSection } from "./components/AboutSection.jsx";
+import { ContactLine } from "./components/ContactLine.jsx";
 import { Footer } from "./components/Footer.jsx";
 import { ArchivePage } from "./pages/ArchivePage.jsx";
 import { WorkDetailPage } from "./pages/WorkDetailPage.jsx";
@@ -81,11 +82,12 @@ function ScrollReveal() {
 function HomePage() {
   return (
     <main>
-      <Hero data={portfolio.hero} navItems={portfolio.navItems} />
+      <AboutSection data={portfolio.about} navItems={portfolio.navItems} />
+      <Hero data={portfolio.hero} />
       <WorkIndex data={portfolio.work} />
       <EditorialPicks data={portfolio.editorialPicks} notes={portfolio.notes.items} />
       <NotesTimeline data={portfolio.notes} />
-      <AboutSection data={portfolio.about} />
+      <ContactLine contact={portfolio.about.contact} />
     </main>
   );
 }

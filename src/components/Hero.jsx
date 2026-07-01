@@ -1,20 +1,9 @@
 import { ArrowIcon } from "./icons.jsx";
 import { Link } from "react-router-dom";
 
-export function Hero({ data, navItems }) {
+export function Hero({ data }) {
   return (
     <section className="hero section-shell" id="index">
-      <aside className="side-index" aria-label="档案索引">
-        <span className="side-index__label">INDEX</span>
-        {navItems.map((item) => (
-          <a key={item.id} href={`#${item.id}`} className="side-index__item">
-            <span>{item.number}</span>
-            <strong>{item.title}</strong>
-            <em>{item.label}</em>
-          </a>
-        ))}
-      </aside>
-
       <div className="hero__main">
         <div className="hero__eyeline">
           <p className="section-count">{data.count}</p>

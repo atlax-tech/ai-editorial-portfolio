@@ -387,7 +387,7 @@ svg {
 
 .hero {
   display: grid;
-  grid-template-columns: 180px minmax(0, 1fr) minmax(260px, 420px);
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 420px);
   gap: clamp(36px, 5vw, 92px);
   padding-top: clamp(40px, 5vw, 56px);
   padding-bottom: clamp(30px, 4vw, 40px);
@@ -867,8 +867,8 @@ h1 {
 
 .about {
   display: grid;
-  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
-  gap: clamp(48px, 9vw, 132px);
+  grid-template-columns: 180px minmax(260px, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(36px, 5vw, 92px);
 }
 
 .about__intro {
@@ -1002,10 +1002,6 @@ h1 {
 
   .header-meta {
     display: none;
-  }
-
-  .hero {
-    grid-template-columns: 150px minmax(0, 1fr);
   }
 
   .signal-figure {
@@ -2415,15 +2411,6 @@ h1 {
 
   .top-nav {
     gap: clamp(18px, 2.2vw, 34px);
-  }
-
-  .hero {
-    grid-template-columns: 150px minmax(0, 1fr);
-  }
-
-  .thesis-index {
-    grid-column: 2;
-    width: 100%;
   }
 
   .hero__main > h1 {

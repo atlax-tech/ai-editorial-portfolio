@@ -1,8 +1,17 @@
-import { MailIcon, PhoneIcon, MapPinIcon } from "./icons.jsx";
-
-export function AboutSection({ data }) {
+export function AboutSection({ data, navItems }) {
   return (
     <section className="about section-shell section-divider" id="about">
+      <aside className="side-index" aria-label="档案索引">
+        <span className="side-index__label">INDEX</span>
+        {navItems.map((item) => (
+          <a key={item.id} href={`#${item.id}`} className="side-index__item">
+            <span>{item.number}</span>
+            <strong>{item.title}</strong>
+            <em>{item.label}</em>
+          </a>
+        ))}
+      </aside>
+
       <div className="about__intro">
         <p className="section-count">{data.count}</p>
         <h2>{data.title}</h2>
@@ -41,25 +50,6 @@ export function AboutSection({ data }) {
             ))}
           </div>
         </section>
-      </div>
-
-      <div className="contact-line" aria-label="联系方式">
-        <a href={`mailto:${data.contact.email}`}>
-          <MailIcon />
-          {data.contact.email}
-        </a>
-        <a href={`tel:${data.contact.phone.replace(/\s/g, "")}`}>
-          <PhoneIcon />
-          {data.contact.phone}
-        </a>
-        <a href={data.contact.socialUrl}>
-          <span className="text-mark">{data.contact.socialMark}</span>
-          {data.contact.social}
-        </a>
-        <span>
-          <MapPinIcon />
-          {data.contact.location}
-        </span>
       </div>
     </section>
   );
