@@ -49,7 +49,7 @@ function ScrollReveal() {
     let observer;
     const frame = window.requestAnimationFrame(() => {
       const sections = document.querySelectorAll(
-        ".section-divider, .detail-section, .editorial-angle-block",
+        "section.section-divider, .detail-section, .editorial-angle-block",
       );
       observer = new IntersectionObserver(
         (entries) => {
