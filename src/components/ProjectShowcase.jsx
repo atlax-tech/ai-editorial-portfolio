@@ -1,317 +1,447 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const number = (value) => String(value + 1).padStart(2, "0");
 
-function NextAction({ children, onClick, testId, quiet = false }) {
+function DemoAction({ children, onClick, tone = "primary", testId }) {
   return (
-    <button
-      className={`concept-action ${quiet ? "concept-action--quiet" : ""}`}
-      type="button"
-      onClick={onClick}
-      data-testid={testId}
-    >
-      <span>{children}</span><strong>NEXT</strong>
+    <button className={`demo-action demo-action--${tone}`} type="button" onClick={onClick} data-testid={testId}>
+      <span>{children}</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
     </button>
   );
 }
 
-function MindDockChrome({ children }) {
-  return (
-    <div className="md-product-window">
-      <div className="md-titlebar">
-        <span className="md-traffic"><i /><i /><i /></span>
-        <strong>Mind Dock</strong>
-        <span>LOCAL-FIRST KNOWLEDGE IDE</span>
-      </div>
-      {children}
-    </div>
-  );
-}
-
-function MindDockSidebar({ activeDoc, setActiveDoc, onCapture }) {
-  return (
-    <aside className="md-sidebar-real">
-      <header><strong>MINDDOCK</strong><span>◐</span></header>
-      <button className="md-command" type="button"><span>⌕</span> 全局命令… <kbd>⌘K</kbd></button>
-      <button className="md-capture-button" type="button" onClick={onCapture}>极速捕获灵感</button>
-      <button className="md-inbox-button" type="button">查看捕获 Inbox</button>
-      <div className="md-new">＋ 新建…</div>
-      <section>
-        <div className="md-tree-title"><span>物理主库</span><span>↻</span></div>
-        <p>⌄ documents</p>
-        {[
-          "MindDock Rebuild v2 PRD",
-          "RB-P4.5 技术方案",
-          "AI Mentor Pipeline",
-          "README",
-        ].map((doc) => (
-          <button type="button" className={activeDoc === doc ? "is-active" : ""} onClick={() => setActiveDoc(doc)} key={doc}>▧ {doc}</button>
-        ))}
-        <p>› notes</p><p>› outputs</p>
-      </section>
-      <footer><span>/Users/qilong.lu/WorkDir/MindDock</span><strong>15 md files · Local</strong></footer>
-    </aside>
-  );
-}
-
-function MindDockPlatter({ view, setView, generated }) {
-  return (
-    <aside className="md-platter-real">
-      <header><strong>PLATTER</strong><span>×</span></header>
-      <nav>
-        {[["mentor", "Mentor"], ["context", "Context"], ["inbox", "Inbox"]].map(([id, label]) => (
-          <button type="button" className={view === id ? "is-active" : ""} onClick={() => setView(id)} key={id}>{label}</button>
-        ))}
-      </nav>
-      {view === "mentor" ? (
-        <div className="md-platter-body">
-          <p className="md-runtime"><i /> AI 助手已连接</p>
-          <details open><summary>当前建议</summary><article><span>OUTPUT READY</span><strong>这篇 PRD 已有足够内容，可以生成产品摘要。</strong><button type="button" onClick={() => setView("context")}>加入 Context Pack</button></article></details>
-          <details><summary>待判断</summary></details><details><summary>可用动作</summary></details><details><summary>相关材料</summary></details>
-        </div>
-      ) : null}
-      {view === "context" ? (
-        <div className="md-context-pack">
-          <span>CONTEXT PACK / ACTIVE</span>
-          <h4>MindDock product brief</h4>
-          <p>4 selected sources · 2,438 tokens</p>
-          {["MindDock Rebuild v2 PRD", "AI Mentor Pipeline", "Quick Capture spec", "Editorial notes"].map((item, index) => <button type="button" key={item}><b>{number(index)}</b><span>{item}</span><em>×</em></button>)}
-          <div className="md-pack-intent"><span>OUTPUT INTENT</span><strong>Product analysis</strong></div>
-          <p className={`md-generated-state ${generated ? "is-ready" : ""}`}>{generated ? "Draft ready in outputs/" : "Ready to generate"}</p>
-        </div>
-      ) : null}
-      {view === "inbox" ? <div className="md-empty"><span>INBOX</span><strong>暂无捕获内容</strong><p>使用极速捕获记录灵感</p></div> : null}
-    </aside>
-  );
-}
-
-function MindDockEditor({ activeDoc, previewMode, setPreviewMode }) {
-  return (
-    <main className="md-workspace-real">
-      <header className="md-workspace-header"><span>编辑器</span><nav><button className="is-active" type="button">编辑器</button><button type="button">MindView <em>NEXT</em></button><button type="button">体检 <em>NEXT</em></button></nav><span>便笺　◫　◎</span></header>
-      <div className="md-tabbar"><span>▧ {activeDoc}</span><span>×</span></div>
-      <div className="md-editor-toolbar"><span>MARKDOWN</span><nav>{["edit", "split", "preview"].map((mode) => <button type="button" className={previewMode === mode ? "is-active" : ""} onClick={() => setPreviewMode(mode)} key={mode}>{mode === "edit" ? "编辑" : mode === "split" ? "分栏" : "预览"}</button>)}</nav></div>
-      <div className={`md-document md-document--${previewMode}`}>
-        {previewMode !== "preview" ? <section className="md-source"><span>1　---</span><span>2　title: {activeDoc}</span><span>3　---</span><h3>5　# {activeDoc}</h3><h4>7　## 0. 总结</h4><p>9　MindDock Rebuild v2 是一个本地优先、AI-native 的知识输出 IDE。它服务于从「快速捕获」到「智能落库」再到「高质量输出」的完整链路。</p><p>13　&gt; 让用户以最小主动维护成本，把零散想法、草稿、正式文档和输出动作组织成可复用的本地知识系统。</p><p>15　AI Mentor 不是 chatbot，而是产品内置私教。</p></section> : null}
-        {previewMode !== "edit" ? <section className="md-preview"><h2>{activeDoc}</h2><h3>0. 总结</h3><p>MindDock Rebuild v2 是一个本地优先、AI-native 的知识输出 IDE。它服务于从「快速捕获」到「智能落库」再到「高质量输出」的完整链路。</p><blockquote>让用户以最小主动维护成本，把零散想法、草稿、正式文档和输出动作组织成可复用的本地知识系统。</blockquote><p>AI Mentor 不是 chatbot，而是产品内置私教。它在关键时刻提供建议、结构化整理和输出生成。</p><hr /><h3>1. 产品愿景</h3></section> : null}
-      </div>
-      <footer><span>/MindDock/documents/{activeDoc}.md</span><strong>已保存　7,683 字符</strong></footer>
-    </main>
-  );
-}
-
-const mindNodes = [
-  { id: "prd", label: "MindDock Rebuild v2 PRD", kind: "document", x: 50, y: 48, size: "lg" },
-  { id: "mentor", label: "AI Mentor", kind: "concept", x: 30, y: 25, size: "md" },
-  { id: "capture", label: "Quick Capture", kind: "feature", x: 18, y: 58, size: "sm" },
-  { id: "context", label: "Context Pack", kind: "feature", x: 72, y: 29, size: "md" },
-  { id: "output", label: "Knowledge Output", kind: "concept", x: 80, y: 62, size: "sm" },
-  { id: "local", label: "Local-first", kind: "principle", x: 55, y: 78, size: "sm" },
-  { id: "pipeline", label: "Mentor Pipeline", kind: "document", x: 31, y: 78, size: "sm" },
-  { id: "trust", label: "Trust Design", kind: "principle", x: 87, y: 40, size: "xs" },
-];
-
-const mindLinks = [["prd", "mentor"], ["prd", "capture"], ["prd", "context"], ["prd", "local"], ["mentor", "pipeline"], ["context", "output"], ["context", "trust"], ["output", "local"], ["capture", "pipeline"]];
-
-function MindDockMindView() {
-  const [selectedNode, setSelectedNode] = useState("prd");
-  const [scope, setScope] = useState("All notes");
-  const [focus, setFocus] = useState(false);
-  const selected = mindNodes.find((node) => node.id === selectedNode);
-  const point = Object.fromEntries(mindNodes.map((node) => [node.id, node]));
-
-  return (
-    <main className="md-mindview" data-testid="mindview-concept">
-      <header>
-        <div><strong>MindView</strong><span>NEXT-STAGE CONCEPT</span></div>
-        <nav>{["All notes", "Documents", "Concepts"].map((item) => <button type="button" className={scope === item ? "is-active" : ""} onClick={() => setScope(item)} key={item}>{item}</button>)}</nav>
-        <button type="button" className={focus ? "is-active" : ""} onClick={() => setFocus((value) => !value)}>{focus ? "Show all" : "Focus selected"}</button>
-      </header>
-      <section className={`md-graph-canvas ${focus ? "is-focused" : ""}`}>
-        <div className="md-graph-legend"><span><i /> DOCUMENT</span><span><i /> CONCEPT</span><span><i /> FEATURE</span></div>
-        <svg viewBox="0 0 100 100" aria-hidden="true" preserveAspectRatio="none">
-          {mindLinks.map(([from, to]) => <line key={`${from}-${to}`} x1={point[from].x} y1={point[from].y} x2={point[to].x} y2={point[to].y} className={selectedNode === from || selectedNode === to ? "is-related" : ""} />)}
-        </svg>
-        {mindNodes.map((node) => <button type="button" key={node.id} onClick={() => setSelectedNode(node.id)} className={`md-graph-node md-graph-node--${node.kind} md-graph-node--${node.size} ${selectedNode === node.id ? "is-active" : ""}`} style={{ left: `${node.x}%`, top: `${node.y}%` }}><i /><span>{node.label}</span></button>)}
-        <aside>
-          <span>SELECTED / {selected.kind.toUpperCase()}</span>
-          <h3>{selected.label}</h3>
-          <p>{selected.id === "prd" ? "产品主文档连接了捕获、Mentor、上下文编排与本地优先原则。" : `与主题「MindDock Rebuild v2」存在 ${selected.id === "context" ? 4 : 2} 条可解释关联。`}</p>
-          <dl><div><dt>BACKLINKS</dt><dd>{selected.id === "prd" ? "07" : "02"}</dd></div><div><dt>UPDATED</dt><dd>2h ago</dd></div></dl>
-          <button type="button">Open source note</button>
-          <button type="button">Add to Context Pack</button>
-        </aside>
-      </section>
-      <footer><span>{scope} · 15 notes · 9 relations</span><strong>Concept based on current Vault model</strong></footer>
-    </main>
-  );
-}
+const mindDocuments = ["MindDock Rebuild v2 PRD", "AI Mentor Pipeline", "Context Pack Spec"];
 
 function MindDockDemo({ activeScreen, onNavigate }) {
-  const [activeDoc, setActiveDoc] = useState("MindDock Rebuild v2 PRD");
-  const [previewMode, setPreviewMode] = useState("split");
-  const [platterView, setPlatterView] = useState(activeScreen === 2 ? "context" : "mentor");
-  const [captureMode, setCaptureMode] = useState("fast");
-  const [captureOpen, setCaptureOpen] = useState(activeScreen === 0);
   const [captureText, setCaptureText] = useState("知识库不是仓库，而是让知识重新进入思考的接口。");
-  const [guided, setGuided] = useState(false);
+  const [mentorState, setMentorState] = useState("ready");
+  const [sources, setSources] = useState(new Set([0, 1, 2]));
   const [generated, setGenerated] = useState(false);
 
-  useEffect(() => {
-    setCaptureOpen(activeScreen === 0);
-  }, [activeScreen]);
-
-  const showCapture = captureOpen;
-  const showMindView = activeScreen === 2;
-  const showOutput = activeScreen === 3;
+  const toggleSource = (index) => {
+    setSources((current) => {
+      const next = new Set(current);
+      if (next.has(index)) next.delete(index);
+      else next.add(index);
+      return next;
+    });
+  };
 
   return (
-    <div className="minddock-theatre">
-      <div className="minddock-theatre__claim"><span>{showMindView ? "NEXT-STAGE CONCEPT / MINDVIEW" : "ACTUAL PRODUCT / CURRENT BUILD"}</span><strong>{activeScreen === 0 ? "先接住，再整理。" : activeScreen === 1 ? "写作与预览，在同一张桌面。" : showMindView ? "关系不是装饰，而是回到材料的路径。" : "不是聊天，而是把知识编排成输出。"}</strong></div>
-      <MindDockChrome>
+    <div className="minddock-theatre" data-testid="minddock-product">
+      <div className="md-product-window">
+        <header className="md-titlebar">
+          <span className="md-traffic" aria-hidden="true"><i /><i /><i /></span>
+          <strong>MindDock</strong>
+          <span>Workspace / Product Research</span>
+          <em><i /> Local Vault</em>
+        </header>
+
         <div className="md-app-real">
-          <MindDockSidebar activeDoc={activeDoc} setActiveDoc={setActiveDoc} onCapture={() => setCaptureOpen(true)} />
-          {showMindView ? <MindDockMindView /> : <MindDockEditor activeDoc={activeDoc} previewMode={previewMode} setPreviewMode={setPreviewMode} />}
-          <MindDockPlatter view={showOutput ? "context" : platterView} setView={setPlatterView} generated={generated} />
-          {showCapture ? (
-            <div className="md-capture-overlay" data-testid="mind-capture-real">
-              <button className="md-capture-backdrop" type="button" aria-label="Close capture" onClick={() => setCaptureOpen(false)} />
-              <section className="md-capture-modal">
-                <header><nav><button type="button" className={captureMode === "fast" ? "is-active" : ""} onClick={() => { setCaptureMode("fast"); setGuided(false); }}>极速</button><button type="button" className={captureMode === "guided" ? "is-active" : ""} onClick={() => setCaptureMode("guided")}>引导</button></nav><button type="button" onClick={() => setCaptureOpen(false)}>×</button></header>
-                {!guided ? <><textarea value={captureText} onChange={(event) => setCaptureText(event.target.value)} aria-label="记录灵感" /><footer><span>{captureMode === "guided" ? "AI 将追问 3 轮帮助理清思路" : "⌘ + Enter"}</span><button type="button" onClick={() => captureMode === "guided" ? setGuided(true) : onNavigate(1)}>{captureMode === "guided" ? "开始引导" : "捕获"}</button></footer></> : <div className="md-guided-step"><span>AI MENTOR · QUESTION 01 / 03</span><h4>这条判断准备解决谁的什么问题？</h4><div><button type="button">AI 产品用户</button><button type="button">知识工作者</button><button type="button">自定义回答</button></div><NextAction onClick={() => onNavigate(1)} testId="mind-to-editor">进入编辑工作区</NextAction></div>}
-              </section>
+          <aside className="md-sidebar-real">
+            <div className="md-brand"><span>MD</span><strong>MindDock</strong></div>
+            <button type="button" className="md-capture-trigger" onClick={() => onNavigate(0)}>＋ 快速捕获 <kbd>⌘ N</kbd></button>
+            <nav>
+              <small>WORKSPACE</small>
+              <button type="button">⌕ 全局搜索</button>
+              <button type="button">◇ Mind View</button>
+              <small>VAULT</small>
+              <span>⌄ documents</span>
+              {mindDocuments.map((item, index) => <button type="button" className={index === 0 ? "is-active" : ""} key={item}>{item}</button>)}
+              <span>› outputs</span>
+            </nav>
+            <footer><span><i /> Vault healthy</span><em>24 documents</em></footer>
+          </aside>
+
+          <main className="md-workspace-real">
+            <header className="md-workspace-header">
+              <div><span>WORKSPACE</span><strong>MindDock Rebuild</strong></div>
+              <nav><button type="button" className="is-active">Editor</button><button type="button">Mind View</button><button type="button">Health</button></nav>
+              <button type="button">⌘ K</button>
+            </header>
+            <div className="md-tabbar"><span>MindDock Rebuild v2 PRD.md</span><i>×</i><button type="button">＋</button></div>
+            <div className="md-editor-toolbar"><span>Markdown</span><i /> <button type="button" className="is-active">Edit</button><button type="button">Split</button><button type="button">Preview</button><em>Saved locally · just now</em></div>
+
+            <div className={`md-document md-document--screen-${activeScreen}`}>
+              <article className="md-source">
+                <small># PRODUCT PRINCIPLE</small>
+                <h3>AI Mentor 不是 chatbot</h3>
+                <p>它在用户捕获灵感、写作卡住、整理知识和准备输出时，主动提供轻量引导与可执行建议。</p>
+
+                {activeScreen === 1 ? (
+                  <div className={`md-inline-mentor md-inline-mentor--${mentorState}`} data-testid="minddock-inline-mentor">
+                    <span className="md-inline-anchor" aria-hidden="true" />
+                    <header><span><i /> MENTOR · DECISION SIGNAL</span><button type="button" aria-label="关闭建议" onClick={() => setMentorState("dismissed")}>×</button></header>
+                    {mentorState === "accepted" ? (
+                      <><strong>已提取为产品原则</strong><p>来源和当前段落位置已经保留，可在 Context Pack 中继续使用。</p><button type="button" onClick={() => onNavigate(2)}>在 Platter 查看 →</button></>
+                    ) : mentorState === "dismissed" ? (
+                      <><strong>建议已暂时收起</strong><button type="button" onClick={() => setMentorState("ready")}>重新显示</button></>
+                    ) : (
+                      <><strong>这段内容已经形成一条可复用的产品原则。</strong><p>提取到 Context Pack，并保留当前文档为来源？</p><footer><button type="button" onClick={() => setMentorState("dismissed")}>稍后</button><button type="button" onClick={() => setMentorState("accepted")}>提取原则</button></footer></>
+                    )}
+                  </div>
+                ) : null}
+
+                <blockquote>让用户以最小主动维护成本，把零散输入组织成可复用的本地知识系统。</blockquote>
+                <p>AI 可以判断候选结构，但不能替用户完成最终决策。建议权属于系统，决定权始终留给人。</p>
+                {activeScreen === 3 && generated ? (
+                  <section className="md-generated-inline"><span>OUTPUT · SAVED TO /outputs</span><h4>让知识重新进入下一次判断</h4><p>MindDock 把智能能力拆进捕获、写作、整理与输出节点，让每次 AI 介入都有来源、时机和明确动作。</p></section>
+                ) : null}
+              </article>
+              <aside className="md-preview">
+                <span>PREVIEW</span>
+                <h3>AI Mentor 不是 chatbot</h3>
+                <p>它不占据一个独立对话框，而是在当前任务的正确位置出现。</p>
+                <hr />
+                <strong>Product principle</strong>
+                <p>让 AI 介入保持短、轻、可拒绝，并与原始材料建立可追溯关系。</p>
+              </aside>
             </div>
-          ) : null}
+          </main>
+
+          <aside className={`md-platter-real ${activeScreen >= 2 ? "is-open" : ""}`}>
+            <header><nav><button type="button" className="is-active">Mentor</button><button type="button">Inbox <i>2</i></button></nav><button type="button">×</button></header>
+            {activeScreen < 2 ? (
+              <div className="md-platter-empty"><span>AI MENTOR</span><strong>保持在写作上下文里</strong><p>短建议贴近正文出现；需要比较来源或执行复杂任务时，才进入 Platter。</p><dl><div><dt>本次文档</dt><dd>1 / 5</dd></div><div><dt>Vault / hour</dt><dd>3 / 20</dd></div></dl></div>
+            ) : (
+              <div className="md-context-pack">
+                <span>ACTIVE CONTEXT PACK</span>
+                <h3>MindDock 产品判断</h3>
+                <p>{sources.size} sources · {sources.size * 812} tokens</p>
+                <div>
+                  {["Rebuild v2 PRD", "AI Mentor Pipeline", "Quick Capture Spec", "Knowledge Workflow Notes"].map((source, index) => (
+                    <button type="button" className={sources.has(index) ? "is-selected" : ""} onClick={() => toggleSource(index)} key={source}><i /> <span><strong>{source}</strong><small>{index === 0 ? "产品定位与非目标" : index === 1 ? "信号与交付策略" : "本地来源"}</small></span></button>
+                  ))}
+                </div>
+                <label><span>OUTPUT INTENT</span><select defaultValue="产品分析"><option>产品分析</option><option>PRD</option><option>研究摘要</option></select></label>
+                <DemoAction onClick={() => { setGenerated(true); onNavigate(3); }} testId="mind-generate">{generated ? "重新生成" : "生成可编辑草稿"}</DemoAction>
+              </div>
+            )}
+          </aside>
         </div>
-      </MindDockChrome>
-      <div className="minddock-theatre__controls">
-        {activeScreen === 0 ? <button type="button" onClick={() => { setCaptureMode("guided"); setGuided(true); }}>体验引导式捕获</button> : null}
-        {activeScreen === 1 ? <NextAction onClick={() => onNavigate(2)} testId="mind-to-mindview">Explore MindView concept</NextAction> : null}
-        {activeScreen === 2 ? <NextAction onClick={() => { setPlatterView("context"); onNavigate(3); }} testId="mind-to-output">Build context pack</NextAction> : null}
-        {activeScreen === 3 ? <NextAction onClick={() => setGenerated(true)} testId="mind-generate-output">{generated ? "Draft generated" : "Generate product brief"}</NextAction> : null}
+
+        {activeScreen === 0 ? (
+          <div className="md-capture-overlay" data-testid="minddock-capture">
+            <button type="button" className="md-capture-scrim" aria-label="关闭快速捕获" onClick={() => onNavigate(1)} />
+            <section className="md-capture-modal">
+              <header><span>QUICK CAPTURE</span><em>先接住，再整理</em></header>
+              <textarea aria-label="快速捕获内容" value={captureText} onChange={(event) => setCaptureText(event.target.value)} autoFocus />
+              <div className="md-guided-step"><span>MENTOR · 1 / 3</span><strong>你希望这条判断之后帮助你产出什么？</strong><nav><button type="button">产品原则</button><button type="button">文章</button><button type="button">Prompt</button></nav></div>
+              <footer><span>原文会先保存，不会被 AI 覆盖</span><DemoAction onClick={() => onNavigate(1)} testId="mind-capture-next">保存到 Inbox</DemoAction></footer>
+            </section>
+          </div>
+        ) : null}
       </div>
     </div>
   );
 }
 
-const agentUnits = [
-  ["Planner", "Scope locked", "complete"],
-  ["Research", "8 sources · 1 uncertain", "running"],
-  ["Synthesis", "Waiting for evidence", "waiting"],
-  ["Publisher", "Human permission only", "locked"],
+const armorModules = [
+  ["01", "Repository Map", "READ"],
+  ["02", "Document Build", "ALIGN"],
+  ["03", "Retrofit", "RECOVER"],
+  ["04", "Drift Update", "EVOLVE"],
+  ["05", "Health Check", "SCAN"],
+  ["06", "Exec Prompt", "BOUND"],
+  ["07", "Verify", "PROVE"],
 ];
 
-function AgentariumDemo({ activeScreen, onNavigate }) {
-  const [selectedAgent, setSelectedAgent] = useState(1);
-  const [selectedEvent, setSelectedEvent] = useState(3);
-  const [decision, setDecision] = useState("pending");
+function ArmorParticles({ stage }) {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return undefined;
+    const context = canvas.getContext("2d");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const colors = ["#8052ff", "#ffb829", "#28e39f", "#e8ebff", "#469bff"];
+    let width = 0;
+    let height = 0;
+    let frame = 0;
+    let raf = 0;
+    const pointer = { x: -9999, y: -9999 };
+    const particles = Array.from({ length: reduceMotion ? 90 : 230 }, (_, index) => ({
+      x: Math.random(), y: Math.random(), vx: 0, vy: 0, size: 1 + Math.random() * 2.4,
+      color: colors[index % colors.length], seed: Math.random() * Math.PI * 2,
+    }));
+
+    const resize = () => {
+      const rect = canvas.getBoundingClientRect();
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      width = rect.width;
+      height = rect.height;
+      canvas.width = Math.max(1, Math.floor(width * ratio));
+      canvas.height = Math.max(1, Math.floor(height * ratio));
+      context.setTransform(ratio, 0, 0, ratio, 0, 0);
+    };
+
+    const targetFor = (index, time) => {
+      const lane = index % 7;
+      const row = Math.floor(index / 7);
+      const angle = (lane / 7) * Math.PI * 2 - Math.PI / 2;
+      const assembled = stage >= 1;
+      const radiusX = width * (stage >= 2 ? 0.285 : 0.36);
+      const radiusY = height * (stage >= 2 ? 0.34 : 0.42);
+      if (!assembled) return { x: ((index * 61) % 997) / 997 * width, y: ((index * 37) % 991) / 991 * height };
+      const jitter = (row % 10) * 3;
+      return {
+        x: width * 0.53 + Math.cos(angle) * (radiusX + jitter) + Math.sin(time + index) * 5,
+        y: height * 0.52 + Math.sin(angle) * (radiusY + jitter * 0.45) + Math.cos(time * 0.8 + index) * 4,
+      };
+    };
+
+    const draw = () => {
+      frame += reduceMotion ? 0 : 1;
+      const time = frame / 120;
+      context.clearRect(0, 0, width, height);
+      particles.forEach((particle, index) => {
+        const target = targetFor(index, time + particle.seed);
+        const currentX = particle.x * width;
+        const currentY = particle.y * height;
+        let ax = (target.x - currentX) * (stage ? 0.003 : 0.00045);
+        let ay = (target.y - currentY) * (stage ? 0.003 : 0.00045);
+        const dx = currentX - pointer.x;
+        const dy = currentY - pointer.y;
+        const distance = Math.hypot(dx, dy);
+        if (distance < 100) {
+          const force = (100 - distance) / 100;
+          ax += (dx / Math.max(distance, 1)) * force * 0.32;
+          ay += (dy / Math.max(distance, 1)) * force * 0.32;
+        }
+        particle.vx = (particle.vx + ax) * 0.94;
+        particle.vy = (particle.vy + ay) * 0.94;
+        particle.x = (currentX + particle.vx) / width;
+        particle.y = (currentY + particle.vy) / height;
+        const x = particle.x * width;
+        const y = particle.y * height;
+        context.save();
+        context.translate(x, y);
+        context.rotate(time + particle.seed);
+        context.fillStyle = particle.color;
+        context.globalAlpha = stage >= 1 ? 0.8 : 0.48;
+        context.beginPath();
+        context.moveTo(0, -particle.size * 1.6);
+        context.lineTo(particle.size * 1.2, particle.size);
+        context.lineTo(-particle.size * 1.2, particle.size);
+        context.closePath();
+        context.fill();
+        context.restore();
+      });
+      if (!reduceMotion) raf = requestAnimationFrame(draw);
+    };
+
+    const onMove = (event) => {
+      const rect = canvas.getBoundingClientRect();
+      pointer.x = event.clientX - rect.left;
+      pointer.y = event.clientY - rect.top;
+    };
+    const onLeave = () => { pointer.x = -9999; pointer.y = -9999; };
+    const observer = new ResizeObserver(resize);
+    observer.observe(canvas);
+    canvas.addEventListener("pointermove", onMove);
+    canvas.addEventListener("pointerleave", onLeave);
+    resize();
+    draw();
+    return () => {
+      cancelAnimationFrame(raf);
+      observer.disconnect();
+      canvas.removeEventListener("pointermove", onMove);
+      canvas.removeEventListener("pointerleave", onLeave);
+    };
+  }, [stage]);
+
+  return <canvas ref={canvasRef} className="armor-particles" aria-hidden="true" />;
+}
+
+function HarnessArmorDemo({ activeScreen, onNavigate }) {
+  const [evolved, setEvolved] = useState(false);
+  const [pulse, setPulse] = useState(0);
+  const stage = activeScreen;
+  const next = () => {
+    if (activeScreen < 3) onNavigate(activeScreen + 1);
+    else { setEvolved(true); setPulse((value) => value + 1); }
+  };
 
   return (
-    <div className="agentarium-stage">
-      <header className="agentarium-masthead"><div><span>AGENTARIUM / RUN 0427</span><strong>Control is a product surface.</strong></div><p><i /> LIVE TRACE　00:31</p></header>
-      {activeScreen === 0 ? (
-        <div className="agentarium-map" data-testid="agent-map-real">
-          <aside><span>ACTIVE RUN</span><strong>04</strong><p>Compare two agent-control approaches and prepare an evidence-based brief.</p><dl><div><dt>HANDOFFS</dt><dd>03</dd></div><div><dt>RISK</dt><dd>MEDIUM</dd></div></dl></aside>
-          <main><div className="agent-path"><span>INPUT</span><i /><span>PLAN</span><i /><span>RESEARCH</span><i /><span>SYNTHESIS</span><i /><span>HUMAN</span></div>{agentUnits.map((unit, index) => <button type="button" className={`agent-ribbon agent-ribbon--${unit[2]} ${selectedAgent === index ? "is-active" : ""}`} onClick={() => setSelectedAgent(index)} key={unit[0]}><span>{number(index)}</span><strong>{unit[0]}</strong><p>{unit[1]}</p><em>{unit[2]}</em></button>)}</main>
-          <aside className="agentarium-inspector"><span>AUTHORITY PROFILE</span><h3>{agentUnits[selectedAgent][0]}</h3><dl><div><dt>CAN</dt><dd>Read sources<br />Draft analysis</dd></div><div><dt>CANNOT</dt><dd>Publish externally<br />Change permissions</dd></div><div><dt>STOP WHEN</dt><dd>Evidence &lt; 80%</dd></div></dl><NextAction onClick={() => onNavigate(1)} testId="agent-to-trace-real">Open execution trace</NextAction></aside>
+    <div className={`armor-lab armor-stage-${stage} ${evolved ? "is-evolved" : ""}`} data-testid="harness-armor-lab">
+      <ArmorParticles stage={stage} key={pulse} />
+      <header className="armor-hud">
+        <div><span>HA</span><strong>HARNESS / ARMOR</strong></div>
+        <p>REPOSITORY DEFENSE SYSTEM</p>
+        <em><i /> {evolved ? "ARMOR v0.1.3" : "ARMOR v0.1.2"}</em>
+      </header>
+
+      <div className="armor-orbit" aria-label="七个 Harness Skills 模块">
+        {armorModules.map(([id, name, mode], index) => (
+          <article className={`${index <= stage * 2 ? "is-online" : ""} armor-plate--${index + 1}`} key={name}>
+            <span>{id}</span><div><strong>{name}</strong><em>{mode}</em></div><i />
+          </article>
+        ))}
+      </div>
+
+      <main className="armor-core">
+        <div className="armor-core__halo" aria-hidden="true"><i /><i /><i /></div>
+        <span className="armor-core__eyebrow">TARGET / atlax-tech</span>
+        <h3>{stage === 0 ? "Repository exposed" : stage === 1 ? "Evidence lattice forming" : stage === 2 ? "Write perimeter locked" : evolved ? "Armor evolved" : "Independent proof online"}</h3>
+        <div className="armor-repo">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 16h19l6 7h23v29H8z" /><path d="M8 23h48" /></svg>
+          <strong>harness-armor</strong><span>{stage === 0 ? "UNMAPPED" : "PROTECTED"}</span>
         </div>
-      ) : null}
-      {activeScreen === 1 ? (
-        <div className="agentarium-trace" data-testid="agent-trace-real">
-          <aside><span>TASK 0427</span><h3>Every answer should have a trace.</h3><p>The interface shows decisions and evidence, not private chain-of-thought.</p><strong>82%</strong><small>EVIDENCE COVERAGE</small></aside>
-          <main><header><span>TIME</span><span>EVENT</span><span>PROOF</span><span>STATE</span></header>{[
-            ["09:41:02", "Planner decomposed task", "4 steps", "DONE"],
-            ["09:41:12", "Official source retrieved", "OpenAI docs", "VERIFIED"],
-            ["09:41:18", "Community claim attached", "Single post", "UNCERTAIN"],
-            ["09:41:29", "Synthesis drafted claim", "2 citations", "REVIEW"],
-            ["09:41:33", "External publish requested", "Permission gate", "PAUSED"],
-          ].map((row, index) => <button type="button" className={selectedEvent === index ? "is-active" : ""} onClick={() => setSelectedEvent(index)} key={row[0]}><time>{row[0]}</time><strong>{row[1]}</strong><span>{row[2]}</span><em>{row[3]}</em></button>)}</main>
-          <aside className="agent-event-detail"><span>EVENT / {number(selectedEvent)}</span><h3>{selectedEvent === 4 ? "High-impact action paused." : "Evidence remains inspectable."}</h3><p>{selectedEvent === 4 ? "Publishing sits outside the agent’s authority boundary." : "Inputs, tools and resulting claims are linked to this event."}</p><NextAction onClick={() => onNavigate(2)} testId="agent-to-check-real">Review checkpoint</NextAction></aside>
-        </div>
-      ) : null}
-      {activeScreen === 2 ? (
-        <div className="agentarium-checkpoint" data-testid="agent-checkpoint-real">
-          <section className="checkpoint-question"><span>HUMAN CHECKPOINT / 03</span><h2>Publish external brief?</h2><p>One source is unverified. The headline contains an absolute claim.</p><div className="checkpoint-risk"><strong>02</strong><span>items require judgment</span></div></section>
-          <section className="checkpoint-proof"><article><span>01 / SOURCE QUALITY</span><strong>7 verified · 1 unverified</strong><button type="button">Exclude uncertain source</button></article><article><span>02 / CLAIM SCOPE</span><strong>“Always prevents silent failure”</strong><button type="button">Return claim for revision</button></article><div><button type="button" onClick={() => setDecision("revision")}>RETURN FOR REVISION</button><button type="button" onClick={() => setDecision("approved")} data-testid="agent-approve-real">APPROVE ONCE</button></div>{decision !== "pending" ? <p>{decision === "approved" ? "One-time permission granted. Action logged." : "Run returned to Synthesis with review notes."}</p> : null}</section>
-          <aside><span>ROLLBACK TRAIL</span><ol><li><strong>NOW</strong><p>Awaiting decision</p></li><li><strong>09:41</strong><p>Draft generated</p></li><li><strong>09:40</strong><p>Clean state</p></li></ol></aside>
-        </div>
-      ) : null}
+        <dl>
+          <div><dt>EVIDENCE</dt><dd>{stage >= 1 ? "47 claims mapped" : "Scanning…"}</dd></div>
+          <div><dt>BOUNDARY</dt><dd>{stage >= 2 ? "3 managed / 1 protected" : "Not armed"}</dd></div>
+          <div><dt>PROOF</dt><dd>{stage >= 3 ? "55 local · 12 CI" : "Awaiting verifier"}</dd></div>
+        </dl>
+      </main>
+
+      <aside className="armor-telemetry">
+        <span>{number(activeScreen)} / 04</span>
+        <strong>{activeScreen === 0 ? "Map the unknown" : activeScreen === 1 ? "Assemble from evidence" : activeScreen === 2 ? "Authorize the exact perimeter" : "Detect drift. Upgrade safely."}</strong>
+        <p>{activeScreen === 0 ? "只读扫描把仓库事实暴露出来。" : activeScreen === 1 ? "七个 Skills 像纳米装甲片一样围绕仓库形成可执行环境。" : activeScreen === 2 ? "人类维护内容被锁定，Agent 只在授权范围内行动。" : evolved ? "检测到结构漂移后，更新计划已验证并升级装甲。" : "独立执行、测试与评审，让完成有证据。"}</p>
+        <div className="armor-signal"><i /><i /><i /><i /><i /></div>
+      </aside>
+
+      <footer className="armor-command">
+        <div><span>SYSTEM TRACE</span><p>{stage === 0 ? "repo.scan --readonly" : stage === 1 ? "skills.assemble --evidence-ledger" : stage === 2 ? "perimeter.lock --human-owned" : evolved ? "drift.patch --verified → v0.1.3" : "verify.run --independent"}</p></div>
+        <DemoAction onClick={next} testId={stage === 3 ? "harness-evolve" : "harness-suit-up"}>{stage === 0 ? "为仓库穿上 Armor" : stage === 1 ? "锁定执行边界" : stage === 2 ? "运行独立验证" : evolved ? "升级完成 · 再次检测" : "模拟漂移并自升级"}</DemoAction>
+      </footer>
     </div>
   );
 }
 
-const deskSignals = [
-  ["OPENAI", "MODEL", "New reasoning model changes tool-use limits", "92"],
-  ["ANTHROPIC", "PRODUCT", "Claude revises computer-use permissions", "78"],
-  ["GITHUB", "COMMUNITY", "Developers report silent rollback failures", "86"],
-  ["REDDIT", "QUESTION", "Why did my agent publish without asking?", "66"],
-];
+const dockFlow = ["Detect", "Resolve", "Permission", "Plan & Diff", "Apply / Rollback"];
 
-function SignalDeskDemo({ activeScreen, onNavigate }) {
-  const [selected, setSelected] = useState(2);
-  const [audience, setAudience] = useState("ORDINARY USERS");
-  const [format, setFormat] = useState("Product analysis");
-  const [created, setCreated] = useState(false);
+function AgentDockDemo({ activeScreen, onNavigate }) {
+  const [runtime, setRuntime] = useState("OpenClaw");
+  const [agent, setAgent] = useState("main");
+  const [permissions, setPermissions] = useState({ Files: true, Shell: true, Browser: false, Channel: false });
+  const [mutation, setMutation] = useState("preview");
+  const flowStep = activeScreen === 3 && mutation === "applied" ? 4 : activeScreen;
+
+  const next = () => onNavigate(Math.min(3, activeScreen + 1));
 
   return (
-    <div className="signaldesk-stage">
-      <header className="signaldesk-masthead"><strong>SIGNAL/DESK</strong><span>AI EDITORIAL INTELLIGENCE　·　WED 01 JUL 2026</span><em>127 LIVE SIGNALS</em></header>
-      {activeScreen === 0 ? (
-        <div className="signaldesk-feed" data-testid="signal-feed-real">
-          <main><header><span>THE LIVE DESK</span><h2>What changed—<br />and who should care?</h2><p>Models, products, communities and public questions in one editorial stream.</p></header><div className="signaldesk-table"><div><span>SOURCE</span><span>SIGNAL</span><span>HEAT</span></div>{deskSignals.map((item, index) => <button type="button" className={selected === index ? "is-active" : ""} onClick={() => setSelected(index)} key={item[2]}><span><strong>{item[0]}</strong><em>{item[1]}</em></span><b>{item[2]}</b><span><i style={{ width: `${item[3]}%` }} /><small>{item[3]}</small></span></button>)}</div></main>
-          <aside className="signal-clipping"><span>SELECTED SIGNAL</span><em>{deskSignals[selected][0]} / {deskSignals[selected][1]}</em><h3>{deskSignals[selected][2]}</h3><p>14 discussions across developer communities in 6 hours. Product impact is plausible; system-wide prevalence is unverified.</p><dl><div><dt>USER IMPACT</dt><dd>HIGH</dd></div><div><dt>NOVELTY</dt><dd>MEDIUM</dd></div><div><dt>EVIDENCE</dt><dd>NEEDS WORK</dd></div></dl><NextAction onClick={() => onNavigate(1)} testId="signal-to-question-real">Map public questions</NextAction></aside>
-        </div>
-      ) : null}
-      {activeScreen === 1 ? (
-        <div className="signaldesk-questions" data-testid="signal-question-real">
-          <aside><span>AUDIENCE LENS</span>{["ORDINARY USERS", "DEVELOPERS", "INDUSTRY"].map((item, index) => <button type="button" className={audience === item ? "is-active" : ""} onClick={() => setAudience(item)} key={item}><span>{number(index)}</span><strong>{item}</strong><em>{[22,17,9][index]}</em></button>)}<p>48 questions clustered from 126 public discussions.</p></aside>
-          <main><header><span>QUESTION MAP / CLUSTER 07</span><h2>{audience === "ORDINARY USERS" ? "They do not ask how many agents exist." : audience === "DEVELOPERS" ? "They ask where the system should stop." : "They ask who owns the outcome."}</h2></header><div className="question-editorial-grid"><section><span>IMMEDIATE</span><article><strong>{audience === "ORDINARY USERS" ? "它会不会擅自发布？" : audience === "DEVELOPERS" ? "如何定义停止条件？" : "谁对 Agent 动作负责？"}</strong><small>18 mentions · rising</small></article><article><strong>出错后能恢复吗？</strong><small>12 mentions</small></article></section><section><span>SYSTEMIC</span><article><strong>我怎么知道答案可靠？</strong><small>9 mentions · high utility</small></article><article><strong>权限边界应该由谁配置？</strong><small>7 mentions</small></article></section></div><blockquote>普通用户并不关心 Agent 有几个，他们关心它做错后谁负责。</blockquote></main>
-          <aside className="editorial-opening"><span>EDITORIAL OPENING</span><h3>From feature update to user consequence.</h3><p>Recommended angle: why rollback determines whether agents can enter real work.</p><NextAction onClick={() => onNavigate(2)} testId="signal-to-decision-real">Make editorial decision</NextAction></aside>
-        </div>
-      ) : null}
-      {activeScreen === 2 ? (
-        <div className="signaldesk-decision" data-testid="signal-decision-real">
-          <main><header><span>EDITORIAL DECISION / SD—071</span><em>REVIEW 03 / 04</em></header><section className="editorial-verdict"><span>FOLLOW?</span><strong>YES</strong><em>WITH A NARROWER ANGLE</em><p>不要写“Agent 安全问题”，写“为什么回滚能力决定 Agent 能不能进入真实工作”。</p></section><section className="editorial-scores"><article><span>NEWS VALUE</span><strong>07</strong><small>Rising, not saturated</small></article><article><span>UTILITY VALUE</span><strong>09</strong><small>Clear user consequence</small></article><article><span>EVIDENCE</span><strong>06</strong><small>One claim to verify</small></article></section><blockquote><span>MEMORABLE JUDGMENT</span>真正的问题不是 AI 会不会做，而是人能不能验收它做得对不对。</blockquote></main>
-          <aside><span>BRIEF BUILDER</span><label>RECOMMENDED FORMAT</label>{["Product analysis", "Explainer", "News brief"].map((item) => <button type="button" className={format === item ? "is-active" : ""} onClick={() => setFormat(item)} key={item}>{item}<small>{format === item ? "SELECTED" : ""}</small></button>)}<dl><div><dt>PRIMARY AUDIENCE</dt><dd>AI product users</dd></div><div><dt>LENGTH</dt><dd>1,800–2,400 words</dd></div><div><dt>RISK</dt><dd>Anecdote ≠ prevalence</dd></div></dl><NextAction onClick={() => setCreated(true)} testId="signal-create-real">{created ? "Brief created" : "Create editorial brief"}</NextAction>{created ? <p>SD—071.md is ready for writing.</p> : null}</aside>
-        </div>
-      ) : null}
+    <div className={`dock-control-room dock-flow-${flowStep}`} data-testid="agentdock-control-room">
+      <header className="dock-control__bar">
+        <div><span>AD</span><strong>AgentDock</strong><em>Local runtime control</em></div>
+        <nav><button type="button" className="is-active">Control Room</button><button type="button">Migration</button><button type="button">Audit</button></nav>
+        <p><i /> LOCAL ONLY <span>No cloud · No telemetry</span></p>
+      </header>
+
+      <ol className="dock-flow-rail">
+        {dockFlow.map((item, index) => <li className={index < flowStep ? "is-done" : index === flowStep ? "is-active" : ""} key={item}><i>{index < flowStep ? "✓" : number(index)}</i><span>{item}</span></li>)}
+      </ol>
+
+      <main className="dock-control__canvas">
+        <section className="dock-topology" aria-label="本地 Agent 运行时拓扑">
+          <svg viewBox="0 0 760 470" preserveAspectRatio="none" aria-hidden="true">
+            <path className="dock-link dock-link--runtime" d="M380 232 C280 210 245 120 150 110" />
+            <path className="dock-link dock-link--runtime" d="M380 232 C480 210 515 120 610 110" />
+            <path className="dock-link dock-link--agent" d="M380 232 C280 255 230 340 138 354" />
+            <path className="dock-link dock-link--model" d="M380 232 C480 255 535 340 630 354" />
+            <path className="dock-link dock-link--safety" d="M380 232 L380 420" />
+          </svg>
+          <div className="dock-node dock-node--machine"><small>THIS MAC</small><strong>Local Control Plane</strong><span><i /> Scanned 2.4s ago</span></div>
+          <button type="button" className={`dock-node dock-node--openclaw ${runtime === "OpenClaw" ? "is-selected" : ""}`} onClick={() => setRuntime("OpenClaw")}><small>RUNTIME / ACTIVE</small><strong>OpenClaw 1.4.2</strong><span>~/.openclaw</span></button>
+          <button type="button" className={`dock-node dock-node--hermes ${runtime === "Hermes" ? "is-selected" : ""}`} onClick={() => setRuntime("Hermes")}><small>RUNTIME / READY</small><strong>Hermes 0.8.1</strong><span>~/.hermes</span></button>
+          <button type="button" className="dock-node dock-node--agent"><small>{runtime === "OpenClaw" ? "AGENT" : "PROFILE"}</small><strong>{agent}</strong><span>08 skills · Persona loaded</span></button>
+          <button type="button" className="dock-node dock-node--model"><small>EFFECTIVE MODEL</small><strong>qwen3:32b</strong><span>Ollama · Local</span></button>
+          <button type="button" className="dock-node dock-node--backup"><small>RECOVERY POINT</small><strong>{mutation === "applied" ? "Backup #018" : "Ready before write"}</strong><span>{mutation === "rolledback" ? "Restored" : "Plan hash locked"}</span></button>
+        </section>
+
+        <aside className="dock-detail-panel">
+          {activeScreen === 0 ? (
+            <div className="dock-detect-panel">
+              <span>01 / RUNTIME DETECTION</span><h3>先看清本机真实存在什么</h3>
+              <div><button type="button" className={runtime === "OpenClaw" ? "is-active" : ""} onClick={() => setRuntime("OpenClaw")}><i />OpenClaw <em>HIGH CONFIDENCE</em></button><button type="button" className={runtime === "Hermes" ? "is-active" : ""} onClick={() => setRuntime("Hermes")}><i />Hermes <em>DETECTED</em></button></div>
+              <dl><div><dt>PATH</dt><dd>{runtime === "OpenClaw" ? "~/.openclaw" : "~/.hermes"}</dd></div><div><dt>STATE</dt><dd>Gateway running</dd></div><div><dt>SOURCE</dt><dd>CLI + local files</dd></div></dl>
+              <DemoAction onClick={next} testId="dock-flow-next">选择 Agent 并解析配置</DemoAction>
+            </div>
+          ) : null}
+
+          {activeScreen === 1 ? (
+            <div className="dock-resolve-panel">
+              <span>02 / EFFECTIVE STATE</span><h3>配置表单不等于最终生效状态</h3>
+              <label>SELECTED {runtime === "OpenClaw" ? "AGENT" : "PROFILE"}<select value={agent} onChange={(event) => setAgent(event.target.value)}><option>main</option><option>dev-agent</option><option>consulting-agent</option></select></label>
+              <ol><li><i>1</i><span>Agent override</span><em>Not set</em></li><li><i>2</i><span>Provider default</span><em>Ollama</em></li><li className="is-active"><i>3</i><span>Resolved model</span><strong>qwen3:32b</strong></li></ol>
+              <p><i /> Local only · No API cost · Secret references redacted</p>
+              <DemoAction onClick={next} testId="dock-flow-next">检查能力与权限</DemoAction>
+            </div>
+          ) : null}
+
+          {activeScreen === 2 ? (
+            <div className="dock-permission-panel">
+              <span>03 / CAPABILITY BOUNDARY</span><h3>把抽象权限翻译成真实能力</h3>
+              <div>{Object.entries(permissions).map(([name, enabled]) => <label key={name}><span><strong>{name}</strong><small>{name === "Files" ? "Workspace read / write" : name === "Shell" ? "Execute local commands" : name === "Browser" ? "Control browser sessions" : "Send external messages"}</small></span><em>{name === "Channel" ? "CRITICAL" : name === "Files" ? "MEDIUM" : "HIGH"}</em><input type="checkbox" checked={enabled} onChange={() => setPermissions((current) => ({ ...current, [name]: !enabled }))} /><i /></label>)}</div>
+              <DemoAction onClick={next} testId="dock-flow-next">生成变更计划</DemoAction>
+            </div>
+          ) : null}
+
+          {activeScreen === 3 ? (
+            <div className="dock-mutation-panel">
+              <span>04 / SAFE MUTATION · MP—018</span><h3>{mutation === "rolledback" ? "配置已恢复" : mutation === "applied" ? "变更已安全应用" : "在写入前看清每一个字节"}</h3>
+              <div className="dock-plan-meta"><span>TARGET <strong>{runtime} / {agent}</strong></span><span>FILES <strong>01</strong></span><span>BACKUP <strong>Required</strong></span></div>
+              <div className="dock-live-diff"><header><span>{runtime === "OpenClaw" ? "~/.openclaw/agents/main/config.json" : "~/.hermes/profiles/main.yaml"}</span><em>UNIFIED DIFF</em></header><p><i>−</i> "model": "openrouter/auto"</p><p><b>+</b> "model": "ollama/qwen3:32b"</p><p><b>+</b> "shell": {String(permissions.Shell)}</p><p><b>+</b> "browser": {String(permissions.Browser)}</p></div>
+              <div className="dock-confirm-line"><i>{mutation === "preview" ? "!" : "✓"}</i><span><strong>{mutation === "preview" ? "Plan hash locks this preview" : mutation === "rolledback" ? "Original bytes restored" : "Backup created before write"}</strong><small>任何变化都会使当前确认失效。</small></span></div>
+              <footer>{mutation === "applied" ? <button type="button" data-testid="dock-rollback" onClick={() => setMutation("rolledback")}>回滚到 Backup #018</button> : <button type="button" onClick={() => setMutation("preview")}>取消</button>}<DemoAction onClick={() => setMutation("applied")} testId="dock-safe-apply">{mutation === "applied" ? "已应用 · 可回滚" : "确认并安全应用"}</DemoAction></footer>
+            </div>
+          ) : null}
+        </aside>
+      </main>
+
+      <footer className="dock-event-stream"><span>LIVE EVENT STREAM</span><p><i /> {mutation === "rolledback" ? "rollback.complete · checksum matched" : mutation === "applied" ? "gateway.restart · effective state verified" : flowStep === 0 ? "runtime.detected · confidence 0.97" : flowStep === 1 ? "config.resolved · inherited provider default" : flowStep === 2 ? "capability.changed · mutation not applied" : "plan.created · awaiting explicit confirmation"}</p><em>Secrets redacted</em></footer>
     </div>
   );
 }
 
-const demos = { minddock: MindDockDemo, agentarium: AgentariumDemo, "signal-desk": SignalDeskDemo };
+const demos = {
+  minddock: MindDockDemo,
+  "harness-armor": HarnessArmorDemo,
+  "agent-dock": AgentDockDemo,
+};
 
 export function MockScreen({ work, activeScreen, onNavigate }) {
   const Demo = demos[work.slug];
-  const screen = work.screens[activeScreen];
+
   return (
     <figure className={`concept-demo concept-demo--${work.slug}`} id={`${work.slug}-panel-${activeScreen}`} role="tabpanel" aria-labelledby={`${work.slug}-tab-${activeScreen}`}>
-      <figcaption><span>{screen.id}</span><div><h3>{screen.name}</h3><p>{screen.description}</p></div><em>{number(activeScreen)} / {String(work.screens.length).padStart(2, "0")}</em></figcaption>
       <Demo activeScreen={activeScreen} onNavigate={onNavigate} />
-      <p className="concept-demo__note"><span>INTERACTIVE PRODUCT STORY</span> 界面内控件可操作；关键链路可连续推进。</p>
+      <p className="concept-demo__note"><span>LIVE PRODUCT CONCEPT</span> 可直接选择、切换与推进，体验这款产品真正的核心链路。</p>
     </figure>
   );
 }
 
-export function InterfacePanel({ label, meta, children, className = "" }) {
-  return <section className={`interface-panel ${className}`}><header className="interface-panel__bar"><strong>{label}</strong><span>{meta}</span></header>{children}</section>;
-}
-
 export function ProductThesis({ children }) {
-  return <blockquote className="product-thesis"><span>PRODUCT THESIS</span><p>{children}</p></blockquote>;
+  return <blockquote className="product-thesis"><span>THE PRODUCT JUDGMENT</span><p>{children}</p></blockquote>;
 }
 
 export function EditorialAngleBlock({ children }) {
-  return <section className="editorial-angle-block"><span>EDITORIAL ANGLE</span><h2>{children}</h2><p>产品展示回答“它是什么”，编辑角度继续追问“它为什么值得被讨论”。</p></section>;
+  return <section className="editorial-angle-block"><span>WHY THIS MATTERS</span><h2>{children}</h2><p>我不仅描述 AI 能做什么，也把它转化为用户能理解、团队能实现、结果能验收的产品系统。</p></section>;
 }
 
 export function ProjectShowcase({ work }) {
   const [activeScreen, setActiveScreen] = useState(0);
+
+  const handleTabKeyDown = (event) => {
+    if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+    event.preventDefault();
+    const direction = event.key === "ArrowRight" ? 1 : -1;
+    setActiveScreen((current) => (current + direction + work.screens.length) % work.screens.length);
+  };
+
   return (
-    <section className="project-showcase detail-section" aria-labelledby="interface-concept-title">
-      <div className="project-showcase__heading"><div><span>03</span><h2 id="interface-concept-title">Interface Concept</h2></div><p>{work.interfaceConcept}</p></div>
-      <div className="project-showcase__tabs" role="tablist" aria-label="Interactive product screens">
-        {work.screens.map((screen, index) => <button type="button" role="tab" id={`${work.slug}-tab-${index}`} aria-controls={`${work.slug}-panel-${index}`} aria-selected={activeScreen === index} tabIndex={activeScreen === index ? 0 : -1} className={activeScreen === index ? "is-active" : ""} key={screen.id} onClick={() => setActiveScreen(index)}><span>{screen.id}</span>{screen.name}</button>)}
+    <section className={`project-showcase project-showcase--${work.slug} case-accent--${work.accent} detail-section`} aria-labelledby="interface-concept-title">
+      <div className="project-showcase__heading">
+        <div><span>03 / INTERACTIVE PROTOTYPE</span><h2 id="interface-concept-title">把产品判断做成可操作界面</h2></div>
+        <p>{work.interfaceConcept}</p>
+      </div>
+      <div className="project-showcase__tabs" role="tablist" aria-label="Interactive product screens" onKeyDown={handleTabKeyDown}>
+        {work.screens.map((screen, index) => (
+          <button type="button" role="tab" id={`${work.slug}-tab-${index}`} aria-controls={`${work.slug}-panel-${index}`} aria-selected={activeScreen === index} tabIndex={activeScreen === index ? 0 : -1} className={activeScreen === index ? "is-active" : ""} key={screen.id} onClick={() => setActiveScreen(index)}>
+            <span>{screen.id}</span><strong>{screen.name}</strong><small>{screen.description}</small><i />
+          </button>
+        ))}
       </div>
       <MockScreen work={work} activeScreen={activeScreen} onNavigate={setActiveScreen} />
     </section>
