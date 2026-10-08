@@ -105,9 +105,13 @@ export function WorkDetailPage() {
 
         <section className="case-status detail-section">
           <header><span>08 / CURRENT MOMENT</span><h2>项目进展</h2></header>
-          <p>{work.currentStatus}</p>
-          {work.evidenceLinks.map((evidence) => <p key={evidence.url}><a href={evidence.url} target="_blank" rel="noreferrer">{evidence.label} <ArrowIcon /></a></p>)}
-          {work.repoUrl ? <a href={work.repoUrl} target="_blank" rel="noreferrer">查看代码与产品文档 <ArrowIcon /></a> : null}
+          <div className="case-status__content">
+            <p>{work.currentStatus}</p>
+            {work.evidenceLinks.length > 0 ? <nav aria-label="贡献证据链接">
+              {work.evidenceLinks.map((evidence) => <a key={evidence.url} href={evidence.url} target="_blank" rel="noreferrer">{evidence.label} <ArrowIcon /></a>)}
+            </nav> : null}
+            {work.repoUrl ? <a href={work.repoUrl} target="_blank" rel="noreferrer">查看代码与产品文档 <ArrowIcon /></a> : null}
+          </div>
         </section>
 
         <section className="detail-section case-related">

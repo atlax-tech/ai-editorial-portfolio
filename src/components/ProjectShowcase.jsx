@@ -194,7 +194,7 @@ function EngineeringDemo({ work, activeScreen, onNavigate }) {
         <span>DESIGN · IMPLEMENTATION · EVIDENCE</span>
         <p>架构链路示意</p>
       </header>
-      <ol className="dock-flow-rail">{work.systemFlow.map((step, index) => <li className={index === activeScreen ? "is-active" : ""} key={step}><i>{number(index)}</i><span>{step}</span></li>)}</ol>
+      <ol className="dock-flow-rail">{work.screens.map((item, index) => <li className={index === activeScreen ? "is-active" : ""} key={item.id}><i>{item.id}</i><span>{item.name}</span></li>)}</ol>
       <main className="dock-control__canvas">
         <section className="dock-topology" aria-label="工程架构示意">
           <svg viewBox="0 0 760 470" preserveAspectRatio="none" aria-hidden="true"><path className="dock-link dock-link--runtime" d="M380 232C280 210 245 120 150 110M380 232C480 210 515 120 610 110M380 232C280 255 230 340 138 354M380 232C480 255 535 340 630 354" /></svg>

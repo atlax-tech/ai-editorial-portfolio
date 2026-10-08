@@ -123,7 +123,7 @@ export const portfolio = {
         "slug": "synora-agentic-erp",
         "title": "Synora-Agentic-ERP",
         "subtitle": "企业采购运营 Agent",
-        "positioning": "独立设计并交付 Agent Runtime 与 ERP 控制层，把自然语言采购目标推进为实际业务结果。",
+        "positioning": "独立交付企业采购 Agent，将模型规划、工具调用与人工审批接入 ERP，以实际业务状态驱动采购闭环。",
         "categoryEn": "Enterprise Agent",
         "category": "Enterprise Agent",
         "status": "真实 ERPNext 开发环境采购闭环已验收 · 持续迭代",
@@ -131,12 +131,12 @@ export const portfolio = {
         "role": "独立项目负责人",
         "repoUrl": "https://github.com/atlax-tech/Synora-Agentic-ERP",
         "accent": "amber",
-        "summary": "独立设计并交付 Agent Runtime 与 ERP 控制层，把自然语言采购目标推进为实际业务结果。",
+        "summary": "独立交付企业采购 Agent，将模型规划、工具调用与人工审批接入 ERP，以实际业务状态驱动采购闭环。",
         "memorableLine": "Agent 的完成标准，应该是业务状态闭环，而不是一段“已完成”的回答。",
         "homePoints": [
-          "模型编排与事务执行分离",
-          "可中断、可恢复的任务执行",
-          "审批、幂等与未知结果对账"
+          "15 个审批动作完成采购闭环",
+          "28 项进程故障测试通过",
+          "Planner / Reviewer 编排与质量评估"
         ],
         "whyBuilt": [
           "企业采购包含订单、收货、开票和付款，单次工具调用成功无法证明整个业务目标完成。",
@@ -157,6 +157,10 @@ export const portfolio = {
           {
             "title": "审批、幂等与未知结果对账",
             "description": "动作状态机串联审批、执行前复验、幂等键和回执；响应丢失时避免重复建单，未知结果暂停执行并进入对账。"
+          },
+          {
+            "title": "评估驱动多 Agent 编排",
+            "description": "建立固定采购用例集，检查任务正确性、引用依据、拒答安全与恢复表现；对 Planner → Policy/Risk Reviewer 开展同模型 A/B，以质量、p95 延迟与 token 用量确定角色采用和回退策略。"
           }
         ],
         "systemFlow": [
@@ -167,9 +171,10 @@ export const portfolio = {
           "业务结果核验与关闭"
         ],
         "engineeringProof": [
-          "真实 ERPNext 开发环境完成采购订单提交、两次部分收货、两张发票及三次付款，覆盖 15 个独立审批动作。",
-          "对响应丢失、事务已提交但回执缺失开展故障注入，验证重放不重复建单，以及未知结果暂停和对账路径。",
-          "FTS5 / BM25 检索保留来源、版本与权限范围；对向量、混合检索和 Rerank 做对照评估，以质量与资源开销选择方案。"
+          "真实 ERPNext 开发环境完成采购订单提交、两次部分收货、两张发票及三次付款，覆盖 15 个独立审批动作；以实际业务状态与未结金额驱动任务关闭。",
+          "完成 7 类动作 × 4 个故障位置的 28 项进程故障测试，28/28 通过；验证重放不重复建单、未知结果暂停并对账，支持执行中断后的恢复。",
+          "固定用例评估覆盖引用、拒答安全与恢复表现；以同模型 A/B 决策 Planner / Reviewer 的采用，并记录 p95 延迟与 token 使用量。",
+          "FTS5 / BM25 检索保留来源、版本与权限范围；以向量、混合检索与 Rerank 对照评估指导选型。"
         ],
         "learned": [
           "企业 Agent 的价值，是把模型规划接入企业系统已有的权限、审批与事务规则。",
@@ -739,7 +744,7 @@ export const portfolio = {
       {
         "id": "05",
         "title": "工程交付",
-        "description": "Agent Skills、故障注入、回归测试与跨平台 CI"
+        "description": "LLM 输出评估、同模型 A/B、故障注入与跨平台 CI"
       }
     ],
     "methods": [
