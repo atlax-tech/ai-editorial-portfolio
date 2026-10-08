@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { portfolio } from "../data/portfolio.js";
+import { portfolio, historicalNotes } from "../data/portfolio.js";
 import { noteContent } from "../content/index.js";
 import { BackLink } from "../components/BackLink.jsx";
 import { TagList } from "../components/TagList.jsx";
@@ -8,7 +8,7 @@ import { NotFoundState } from "../components/NotFoundState.jsx";
 
 export function NoteDetailPage() {
   const { slug } = useParams();
-  const note = portfolio.notes.items.find((item) => item.slug === slug);
+  const note = [...portfolio.notes.items, ...historicalNotes].find((item) => item.slug === slug);
   const content = noteContent[slug];
 
   if (!note || !content) {

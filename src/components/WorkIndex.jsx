@@ -4,19 +4,6 @@ import { ArrowIcon } from "./icons.jsx";
 
 const twoDigits = (index) => String(index + 1).padStart(2, "0");
 
-function MindDockMiniature() {
-  return (
-    <div className="work-visual work-visual--minddock" aria-label="MindDock 原生知识编辑器预览">
-      <header><span><i /><i /><i /></span><strong>MindDock</strong><em><i /> Local Vault</em></header>
-      <div className="work-visual__mind-app">
-        <aside><b>MD</b><small>WORKSPACE</small><span>⌕ Search</span><span>◇ Mind View</span><small>VAULT</small><strong>MindDock PRD</strong><span>AI Mentor Pipeline</span></aside>
-        <main><nav><span>MindDock Rebuild v2 PRD.md</span><em>Saved locally</em></nav><small># PRODUCT PRINCIPLE</small><h3>AI Mentor 不是 chatbot</h3><p>它在写作上下文的正确位置给出轻量、可执行、可拒绝的建议。</p><div className="work-visual__inline"><i /><span><small>MENTOR · DECISION SIGNAL</small><strong>这是一条可复用的产品原则</strong></span><button type="button">提取</button></div></main>
-        <section><span>PLATTER</span><strong>Context Pack</strong><p>3 sources · local only</p><i /><i /><i /></section>
-      </div>
-    </div>
-  );
-}
-
 function HarnessMiniature() {
   return (
     <div className="work-visual work-visual--harness" aria-label="Harness Armor 纳米装甲预览">
@@ -32,35 +19,26 @@ function HarnessMiniature() {
   );
 }
 
-function AgentDockMiniature() {
+function EngineeringMiniature({ work }) {
   return (
-    <div className="work-visual work-visual--agentdock" aria-label="AgentDock 本地运行时控制拓扑预览">
-      <header><span><b>AD</b> AgentDock</span><nav>CONTROL ROOM</nav><em><i /> LOCAL ONLY</em></header>
-      <div className="work-dock__flow">{["DETECT", "RESOLVE", "PERMISSION", "APPLY"].map((item, index) => <span className={index < 3 ? "is-active" : ""} key={item}><i>{twoDigits(index)}</i>{item}</span>)}</div>
+    <div className="work-visual work-visual--agentdock" aria-label={`${work.title} 工程链路示意`}>
+      <header><span><b>AI</b> {work.title}</span><nav>ENGINEERING MAP</nav><em>ARCHITECTURE</em></header>
+      <div className="work-dock__flow">{work.screens.map((screen) => <span className="is-active" key={screen.id}><i>{screen.id}</i>{screen.name}</span>)}</div>
       <div className="work-dock__map">
         <svg viewBox="0 0 660 280" preserveAspectRatio="none" aria-hidden="true"><path d="M330 140C230 130 210 55 110 50M330 140C430 130 455 55 555 50M330 140C220 165 205 235 105 235M330 140C440 165 460 235 560 235" /></svg>
-        <main><small>THIS MAC</small><strong>Local Control</strong><span>Scanned now</span></main>
-        <button type="button" className="node-one"><small>RUNTIME</small><strong>OpenClaw</strong></button>
-        <button type="button" className="node-two"><small>RUNTIME</small><strong>Hermes</strong></button>
-        <button type="button" className="node-three"><small>AGENT</small><strong>main</strong></button>
-        <button type="button" className="node-four"><small>MODEL</small><strong>qwen3:32b</strong></button>
+        <main><small>ENGINEERING</small><strong>{work.categoryEn}</strong><span>Design · Code · Verify</span></main>
+        {work.screens.map((screen, index) => <button type="button" tabIndex={-1} aria-disabled="true" className={`node-${["one", "two", "three", "four"][index]}`} key={screen.id}><small>{screen.id}</small><strong>{screen.name}</strong></button>)}
       </div>
-      <footer><span>Plan hash locked · Backup ready</span><strong>REVIEW DIFF →</strong></footer>
+      <footer><span>{work.role}</span><strong>CASE STUDY →</strong></footer>
     </div>
   );
 }
-
-const miniatures = {
-  minddock: MindDockMiniature,
-  "harness-armor": HarnessMiniature,
-  "agent-dock": AgentDockMiniature,
-};
 
 export function WorkIndex({ data }) {
   const [activeSlug, setActiveSlug] = useState(data.items[0]?.slug);
   const activeIndex = Math.max(0, data.items.findIndex((item) => item.slug === activeSlug));
   const activeItem = data.items[activeIndex];
-  const Miniature = miniatures[activeItem.slug];
+  const Miniature = activeItem.slug === "harness-armor" ? HarnessMiniature : EngineeringMiniature;
 
   return (
     <section className="work case-index section-shell section-divider" id="work">
@@ -89,7 +67,7 @@ export function WorkIndex({ data }) {
             {activeItem.repoUrl ? <a href={activeItem.repoUrl} target="_blank" rel="noreferrer">GitHub <ArrowIcon /></a> : null}
           </div>
         </div>
-        <div className="case-index__stage"><Miniature /></div>
+        <div className="case-index__stage"><Miniature work={activeItem} /></div>
       </article>
 
       <footer className="case-index__progress">

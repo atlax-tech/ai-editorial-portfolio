@@ -1136,7 +1136,7 @@ h1 {
   .hero,
   .notes,
   .about {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .section-heading {
@@ -1230,6 +1230,7 @@ h1 {
   }
 
   .capability-row {
+    grid-template-columns: 52px minmax(100px, 0.42fr) minmax(0, 1fr);
     gap: 8px;
     align-items: start;
     padding: 18px 0;
@@ -3418,7 +3419,7 @@ h1 {
   top: 76px;
   z-index: 6;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   max-width: 980px;
   margin: 0 auto clamp(34px, 5vw, 70px);
   overflow: hidden;
@@ -4742,7 +4743,7 @@ h1 {
   .case-index__intro { text-align: left; }
   .case-index__intro h2,
   .case-index__statement { margin-left: 0; }
-  .case-index__selector { top: 72px; grid-template-columns: repeat(3, minmax(155px,1fr)); max-width: 100%; overflow-x: auto; border-radius: 18px; }
+  .case-index__selector { top: 72px; grid-template-columns: repeat(4, minmax(155px,1fr)); max-width: 100%; overflow-x: auto; border-radius: 18px; }
   .case-index__selector button { min-width: 155px; padding: 0 16px; }
   .case-index__chapter { min-height: 0; padding: 30px; border-radius: 30px; }
   .case-index__copy h3 { font-size: clamp(3.4rem,14vw,6.6rem); }
