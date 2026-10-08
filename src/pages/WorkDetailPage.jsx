@@ -60,7 +60,7 @@ export function WorkDetailPage() {
         </section>
 
         <section className="case-decisions detail-section">
-          <header><span>02 / DESIGN DECISIONS</span><h2>不是加功能，而是划清 AI 与人的责任。</h2></header>
+          <header><span>02 / DESIGN DECISIONS</span><h2>关键架构决策与工程取舍。</h2></header>
           <div className="case-decisions__list">
             {work.designDecisions.map((decision, index) => (
               <article key={decision.title}>
@@ -72,7 +72,7 @@ export function WorkDetailPage() {
           </div>
         </section>
 
-        <ProjectShowcase work={work} />
+        <ProjectShowcase key={work.slug} work={work} />
 
         <section className="case-system detail-section">
           <header><span>04 / SYSTEM MODEL</span><h2>把智能能力拆成一条可执行链路。</h2></header>
@@ -84,7 +84,7 @@ export function WorkDetailPage() {
         </section>
 
         <section className="case-proof detail-section">
-          <header><span>05 / ENGINEERING PROOF</span><h2>产品判断最终要落到工程证据。</h2></header>
+          <header><span>05 / ENGINEERING PROOF</span><h2>用交付结果证明工程能力。</h2></header>
           <div>
             {work.engineeringProof.map((proof, index) => (
               <article key={proof}><span>{String(index + 1).padStart(2, "0")}</span><p>{proof}</p></article>
@@ -105,8 +105,13 @@ export function WorkDetailPage() {
 
         <section className="case-status detail-section">
           <header><span>08 / CURRENT MOMENT</span><h2>项目进展</h2></header>
-          <p>{work.currentStatus}</p>
-          {work.repoUrl ? <a href={work.repoUrl} target="_blank" rel="noreferrer">查看代码与产品文档 <ArrowIcon /></a> : null}
+          <div className="case-status__content">
+            <p>{work.currentStatus}</p>
+            {work.evidenceLinks.length > 0 ? <nav aria-label="贡献证据链接">
+              {work.evidenceLinks.map((evidence) => <a key={evidence.url} href={evidence.url} target="_blank" rel="noreferrer">{evidence.label} <ArrowIcon /></a>)}
+            </nav> : null}
+            {work.repoUrl ? <a href={work.repoUrl} target="_blank" rel="noreferrer">查看代码与产品文档 <ArrowIcon /></a> : null}
+          </div>
         </section>
 
         <section className="detail-section case-related">

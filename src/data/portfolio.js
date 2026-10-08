@@ -1,581 +1,990 @@
 export const portfolio = {
-  meta: {
-    name: "ATLAX-TECH / AI 资讯研究所",
-    owner: "Qilong Lu / 路启隆",
-    role: "AI 方向编辑 / AI 产品体验",
-    year: "2026",
-    language: "CN",
+  "meta": {
+    "name": "ATLAX-TECH / AI Agent 工程",
+    "owner": "Qilong Lu / 路启隆",
+    "role": "AI Agent 应用工程师",
+    "year": "2026",
+    "language": "CN"
   },
-  navItems: [
-    { id: "about", number: "01", label: "ABOUT", title: "关于我" },
-    { id: "index", number: "02", label: "O-VIEW", title: "AI 工作流" },
-    { id: "notes", number: "03", label: "NOTES", title: "观察笔记" },
-    { id: "work", number: "04", label: "WORK", title: "作品索引" },
+  "navItems": [
+    {
+      "id": "about",
+      "number": "01",
+      "label": "ABOUT",
+      "title": "关于我"
+    },
+    {
+      "id": "index",
+      "number": "02",
+      "label": "O-VIEW",
+      "title": "AI 工作流"
+    },
+    {
+      "id": "notes",
+      "number": "03",
+      "label": "NOTES",
+      "title": "观察笔记"
+    },
+    {
+      "id": "work",
+      "number": "04",
+      "label": "WORK",
+      "title": "作品索引"
+    }
   ],
-  hero: {
-    count: "02 / 04",
-    identity: "路启隆 / AI PRODUCT EDITOR",
-    title: "AI 产品观察档案",
-    lead: "把复杂技术转译成可判断、可传播、可行动的产品叙事。",
-    body:
-      "我从技术实现、产品体验与用户场景之间做判断：谁会用、怎么用、能不能持续用。",
-
-    entries: [
-      { id: "01", slug: "minddock", title: "MindDock", type: "Knowledge IDE", time: "Active build" },
-      { id: "02", slug: "harness-armor", title: "Harness Armor", type: "Agent Skills", time: "Open source" },
-      { id: "03", slug: "agent-dock", title: "AgentDock", type: "Runtime Control", time: "Active build" },
+  "hero": {
+    "count": "02 / 04",
+    "identity": "路启隆 / AI AGENT ENGINEER",
+    "title": "AI Agent 工程档案",
+    "lead": "把模型能力接入真实业务，交付可执行、可验证、可恢复的 Agent 工作流。",
+    "body": "专注 Agent 编排、上下文工程与运行可靠性。从企业 ERP 交付经验出发，把业务目标落到工具调用、审批执行与结果验收。",
+    "entries": [
+      {
+        "id": "01",
+        "slug": "synora-agentic-erp",
+        "title": "Synora-Agentic-ERP",
+        "type": "Enterprise Agent",
+        "time": "独立项目"
+      },
+      {
+        "id": "02",
+        "slug": "harness-armor",
+        "title": "Harness Armor",
+        "type": "Agent Skills",
+        "time": "独立项目"
+      },
+      {
+        "id": "03",
+        "slug": "codex-with-chatgpt",
+        "title": "codex-with-chatgpt",
+        "type": "Agent Infrastructure",
+        "time": "开源贡献"
+      },
+      {
+        "id": "04",
+        "slug": "dsh-desktop",
+        "title": "dsh-desktop",
+        "type": "Model Integration",
+        "time": "开源贡献"
+      }
     ],
-    theses: [
+    "theses": [
       {
-        id: "01",
-        label: "PRODUCT",
-        statement: "AI 降低的是做出来的门槛，不是想清楚的门槛。",
+        "id": "01",
+        "label": "PRODUCT",
+        "statement": "AI 降低的是做出来的门槛，不是想清楚的门槛。"
       },
       {
-        id: "02",
-        label: "AGENT",
-        statement: "真正的问题不是 AI 会不会做，而是人能不能验收它做得对不对。",
+        "id": "02",
+        "label": "AGENT",
+        "statement": "真正的问题不是 AI 会不会做，而是人能不能验收它做得对不对。"
       },
       {
-        id: "03",
-        label: "EDITORIAL",
-        statement: "热点不是选题，热点背后的普通人问题才是选题。",
-      },
-    ],
+        "id": "03",
+        "label": "ENGINEERING",
+        "statement": "上下文、执行边界与验收证据，决定 Agent 能承接多复杂的工作。"
+      }
+    ]
   },
-  archive: {
-    title: "Archive",
-    subtitle: "Projects, notes, samples and editorial plans.",
+  "archive": {
+    "title": "Archive",
+    "subtitle": "Agent engineering, open-source contributions and technical notes."
   },
-  editorialPicks: {
-    title: "编辑精选",
-    label: "EDITOR'S SELECTION",
-    description: "三篇最能代表我如何判断 AI 产品、Agent 和知识系统的文章。",
-    items: [
+  "editorialPicks": {
+    "title": "Agent 技术思考",
+    "label": "ENGINEERING NOTES",
+    "description": "从 Agent 控制、工程上下文与检索边界，理解我做架构决策的出发点。",
+    "items": [
       {
-        slug: "ai-model-news-is-not-enough",
-        reason: "不复述模型发布，而是检查它对普通用户的真实影响。",
+        "slug": "ai-agent-control-problem",
+        "reason": "从目标、权限、状态与失败出口，理解 Synora 的审批和执行可靠性设计。"
       },
       {
-        slug: "openclaw-control-and-asset-defense",
-        reason: "从 OpenClaw 爆红看 Agent 时代控制权、安全边界与用户资产保护。",
+        "slug": "harness-engineering-is-not-prompt-template",
+        "reason": "把 Coding Agent 的上下文、变更边界和验收规则落实为 Harness Armor。"
       },
       {
-        slug: "knowledge-base-is-not-warehouse",
-        reason: "从 Obsidian 装修工到自生长知识库，记录知识库如何从仓库变成训练场。",
-      },
-    ],
+        "slug": "rag-is-not-a-magic-memory",
+        "reason": "检索价值来自来源、版本和权限，而不是让模型声称它记得。"
+      }
+    ]
   },
-  work: {
-    count: "03 / 03",
-    title: "我不把 AI 当成一个功能。",
-    statement: "我把它设计成可执行、可验证、可恢复的工作流。",
-    description:
-      "三个项目，回答三种 AI 应用落地问题：知识如何复用、Agent 如何可靠执行、本地运行时如何被安全管理。",
-    filters: ["全部"],
-    items: [
-      {
-        id: "PC—01",
-        slug: "minddock",
-        title: "MindDock",
-        subtitle: "AI-Native Karpathy LLM 理论驱动知识仓库",
-        positioning: "把零散输入组织成可理解、可复用、可提取的本地知识工作流。",
-        categoryEn: "AI Knowledge Workflow",
-        category: "Knowledge IDE",
-        status: "Product concept · Active build",
-        time: "2026",
-        role: "产品定位 · AI 工作流 · 全栈原型",
-        repoUrl: null,
-        accent: "amber",
-        summary: "从快速捕获、智能澄清、结构沉淀，到 Context Pack 与高质量输出。",
-        memorableLine: "AI 不该只在聊天框里等待提问，它应该在关键节点帮助人完成下一步。",
-        homePoints: ["Embedded AI Mentor", "Local-first Vault", "Context-driven Output"],
-        whyBuilt: [
-          "传统知识工具擅长保存，却把分类、整理、关联和复用的维护成本长期留给用户。内容越多，系统越容易从“第二大脑”退化成只进不出的仓库。",
-          "我重新定义了 AI 在知识产品里的位置：它不是悬浮在界面旁边的聊天入口，而是一个能感知任务阶段、在捕获、写作、整理和输出节点主动出现的 Mentor。",
-        ],
-        productHypothesis: "如果系统能先无门槛接住输入，再由 AI 在正确时机完成有限追问、结构建议与上下文编排，用户就能把注意力留在思考和表达上，而不是维护工具本身。",
-        interfaceConcept: "把一条灵感从 Quick Capture 送入本地 Vault，经由 Inline Mentor 澄清与建议，再进入可追溯的 Context Pack，最终生成可继续编辑的输出。",
-        editorialAngle: "好的 AI 知识产品，不是替人记住更多，而是让旧材料重新进入下一次判断。",
-        designDecisions: [
-          { title: "从 Chatbot 到 Embedded Mentor", description: "以事件、信号和交付策略决定 AI 何时出现、出现在哪、给什么动作，减少无关对话与打扰。" },
-          { title: "建议权属于 AI，决定权留给人", description: "标题、摘要、标签、归属与关联由 AI 给出候选，用户可以接受、修改或拒绝。" },
-          { title: "Local-first 是信任接口", description: "本地 Vault、Markdown 真源、版本快照和可迁移输出，让用户始终拥有自己的知识资产。" },
-        ],
-        systemFlow: ["快速捕获", "Mentor 澄清", "结构沉淀", "上下文提取", "内容输出"],
-        engineeringProof: [
-          "以 Tauri + React 构建桌面工作区，覆盖本地 Vault、Markdown 编辑、Quick Capture、AI 建议与版本快照。",
-          "将 Mentor 拆为事件、信号检测、交付策略、建议动作与偏好控制，避免把全部智能塞进一次 Prompt。",
-          "在 rebuild 的阶段分支中推进语义检索、向量索引、Context Pack、生成意图与可追溯来源。",
-        ],
-        learned: [
-          "AI 交互的关键不是回答长度，而是出现时机、动作粒度与用户是否保有控制权。",
-          "知识图谱的价值不在节点数量，而在它是否能帮助提取上下文、复习和再次输出。",
-          "当产品处理长期知识资产时，可迁移、可追溯与本地优先本身就是核心体验。",
-        ],
-        currentStatus: "Rebuild 版本已形成从本地 Vault、捕获、编辑、Mentor 建议到 Context Pack 的连续桌面工作流，并在阶段分支持续推进语义检索与嵌入式 Mentor。",
-        relatedNoteSlugs: ["rag-is-not-a-magic-memory", "karpathy-llm-wiki-and-personal-knowledge-base"],
-        screens: [
-          { id: "01", name: "Quick Capture", type: "capture", description: "先接住模糊想法，再选择极速保存或有限追问。" },
-          { id: "02", name: "Inline Mentor", type: "mentor", description: "在写作上下文中给出短建议，而不是把用户拖进聊天框。" },
-          { id: "03", name: "Context Pack", type: "context", description: "选择有来源的本地材料，明确输出意图并控制上下文。" },
-          { id: "04", name: "Knowledge Output", type: "output", description: "生成可追溯、可继续编辑并可保存回 Vault 的内容。" },
-        ],
-      },
-      {
-        id: "PC—02",
-        slug: "harness-armor",
-        title: "Harness Armor",
-        subtitle: "可自迭代的 Harness Engineering Skills",
-        positioning: "为 Coding Agent 提供统一项目地图、执行边界和完成标准的 Agent Skills 套件。",
-        categoryEn: "Harness Engineering",
-        category: "Agent Skills",
-        status: "Open-source · v0.1.2",
-        time: "2026",
-        role: "产品定义 · 工作流架构 · 工程实现",
-        repoUrl: "https://github.com/atlax-tech/harness-armor",
-        accent: "lime",
-        summary: "把仓库证据、文件边界、授权门禁、漂移检测与独立验收编排成可复用工作流。",
-        memorableLine: "Agent 负责理解语义，确定性工具负责清点、哈希与验证。",
-        homePoints: ["Evidence before inference", "Authorization by default", "Independent verification"],
-        whyBuilt: [
-          "Coding Agent 进入陌生仓库后，常常重复探索、根据目录名猜架构、越过文件边界修改，并把“配置了测试”误报成“测试已通过”。问题不只在模型，而在仓库没有一套可被 Agent 读取和执行的工程环境。",
-          "我把这个问题收敛成三个必须先回答的问题：什么是真的、什么允许修改、什么能够证明完成。由此形成七个相互衔接、可独立调用的 Agent Skills。",
-        ],
-        productHypothesis: "当仓库事实、权限边界和验收证据都能被显式读取与验证时，Agent 才能把一次偶然成功变成可重复、可审查的工程过程。",
-        interfaceConcept: "从只读扫描开始，将仓库状态路由到合适 Skill；用证据账本区分事实与未知，用文件级计划和授权门禁控制写入，最后分离执行、测试与评审。",
-        editorialAngle: "Prompt 说明任务，Harness 决定 Agent 在什么环境里、依据什么证据、把事情做到什么标准。",
-        designDecisions: [
-          { title: "证据状态，而不是自信语气", description: "用 CONFIRMED / INFERRED / UNRESOLVED / CONFLICTED 标记结论质量，让未知保持可见。" },
-          { title: "语义交给 Agent，稳定性交给工具", description: "模型理解产品意图；确定性脚本负责扫描、指纹、漂移检测、结构校验与健康评分。" },
-          { title: "自迭代必须受控", description: "发现漂移后先输出文件级更新计划，只有在明确授权后才能写入，并保护人工维护内容。" },
-        ],
-        systemFlow: ["只读扫描", "证据分类", "工作流路由", "授权更新", "独立验收"],
-        engineeringProof: [
-          "七个可独立发现的 Agent Skills，覆盖初始化、文档驱动构建、旧仓恢复、更新、检查与执行提示生成。",
-          "55 / 55 本地测试与 12 / 12 GitHub Actions 跨平台矩阵任务通过，覆盖多系统与多运行时版本。",
-          "适配 Claude Code、Codex、Cursor、TRAE 与通用 Agent Skills 客户端，运行时脚本仅使用 Python 标准库。",
-        ],
-        learned: [
-          "Agent 可靠性不是在结果末尾补一个检查框，而是从证据获取、权限范围到验收角色的系统设计。",
-          "可观测性不等于展示思维过程；真正有用的是来源、动作、边界和实际运行过的验证。",
-          "自迭代的前提不是自动写入，而是能识别漂移、保护所有权并让更新计划先被人看见。",
-        ],
-        currentStatus: "v0.1.2 已作为完整开源 Agent Skills 套件发布，包含跨客户端安装器、证据工具链、评估契约与持续集成验证。",
-        relatedNoteSlugs: ["harness-engineering-is-not-prompt-template", "demo-is-not-product", "codex-and-claude-code-are-not-ides"],
-        screens: [
-          { id: "01", name: "Repository Scan", type: "scan", description: "先只读识别仓库状态，再路由到合适的专业 Skill。" },
-          { id: "02", name: "Evidence Ledger", type: "evidence", description: "把事实、推断、未知与冲突分开，结论可回到仓库来源。" },
-          { id: "03", name: "Authorization Gate", type: "authorization", description: "展示文件级变更范围、所有权与漂移，再请求明确授权。" },
-          { id: "04", name: "Independent Verify", type: "verify", description: "将执行、测试与评审拆开，只报告真正运行过的证据。" },
-        ],
-      },
-      {
-        id: "PC—03",
-        slug: "agent-dock",
-        title: "AgentDock",
-        subtitle: "本地 Agent 运行时与安全配置管理",
-        positioning: "图形化管理 OpenClaw / Hermes 的运行时、Agent/Profile、Provider、权限与高风险配置。",
-        categoryEn: "Local Agent Runtime",
-        category: "Runtime Control",
-        status: "Desktop concept · Active build",
-        time: "2026",
-        role: "产品定位 · 安全流程 · 桌面端实现",
-        repoUrl: null,
-        accent: "cobalt",
-        summary: "把分散在目录、CLI 和配置文件里的 Agent 状态，转化为可见、可预览、可恢复的产品流程。",
-        memorableLine: "高风险配置不是一个开关，而是一条可预览、可确认、可恢复的操作链。",
-        homePoints: ["Runtime-aware adapters", "Plan · Diff · Backup", "Local-first control"],
-        whyBuilt: [
-          "OpenClaw 与 Hermes 的真实门槛不只是安装命令，而是安装以后用户仍然不知道配置在哪、哪个 Agent 使用哪个模型、权限开了多大，以及迁移或卸载会影响什么。",
-          "我把 AgentDock 定义为本地运行时的控制面，而不是另一个聊天客户端：先看清机器上真实存在什么，再对每次配置变更给出范围、差异、备份和恢复路径。",
-        ],
-        productHypothesis: "如果运行时检测、有效配置解析和高风险 mutation 都被翻译成可理解的界面流程，轻技术用户就能在不牺牲本地性和控制权的前提下使用个人 Agent。",
-        interfaceConcept: "以 Runtime → Agent/Profile → Config → Provider/Permission/Skill 为管理模型；先检测与扫描，再预览 effective model 或权限，所有写入经过 Plan → Diff → Backup → Confirm → Apply → Rollback。",
-        editorialAngle: "本地 Agent 的价值不只在隐私，更在用户能否理解并控制它实际拥有的能力。",
-        designDecisions: [
-          { title: "适配运行时差异，不做虚假统一", description: "优先官方文档、CLI 输出与本机文件扫描；未知结构只读展示，不静默猜测。" },
-          { title: "把权限翻译成用户能判断的风险", description: "文件、Shell、Browser、Channel、Network 与 Secret 转发被拆成具体能力，而不是笼统的“完全访问”。" },
-          { title: "Mutation 是一条安全事务", description: "高风险操作必须先生成计划与 Diff，创建备份，确认后应用，并保留回滚入口。" },
-        ],
-        systemFlow: ["运行时检测", "配置扫描", "有效状态解析", "变更预览", "应用与回滚"],
-        engineeringProof: [
-          "在 Tauri 桌面端实现 OpenClaw / Hermes 运行时检测、Agent/Profile 扫描、脱敏与置信度标注。",
-          "推进 Agent/Profile 生命周期、人格文件管理、Provider 配置和 effective model 解析。",
-          "通过 Rust 命令层约束可操作路径，并将删除、恢复与配置写入组织为带 plan hash、backup 和 diff 的流程。",
-        ],
-        learned: [
-          "本地优先不是“不联网”四个字，而是数据真源、Secret 处理、日志脱敏和主动网络请求的完整承诺。",
-          "跨运行时产品最危险的抽象，是为了界面统一而忽略配置语义差异。",
-          "用户真正需要的不是更多开关，而是每个动作会改什么、如何生效、出了问题怎样恢复。",
-        ],
-        currentStatus: "dev 分支持续推进桌面端核心链路，已覆盖运行时检测、Agent/Profile 管理、人格文件与 Provider / Model 配置等关键工作面。",
-        relatedNoteSlugs: ["openclaw-control-and-asset-defense", "ai-agent-control-problem", "agent-matrix-does-not-equal-company"],
-        screens: [
-          { id: "01", name: "Runtime Detection", type: "runtime", description: "30 秒内看清 OpenClaw / Hermes 的安装、版本、路径与运行状态。" },
-          { id: "02", name: "Effective Model", type: "provider", description: "把 Provider、默认模型、Fallback 与成本/隐私影响解释清楚。" },
-          { id: "03", name: "Permission Profile", type: "permission", description: "用具体能力与风险等级代替模糊的全开/全关。" },
-          { id: "04", name: "Safe Apply", type: "mutation", description: "先预览 Plan 与 Diff，创建备份，确认应用后仍可回滚。" },
-        ],
-      },
+  "work": {
+    "count": "04 / 04",
+    "title": "我不把 AI 当成一个功能。",
+    "statement": "我把它设计成可执行、可验证、可恢复的工作流。",
+    "description": "两个独立工程项目与两项开源贡献，覆盖企业 Agent、上下文工程、运行状态机与模型集成。",
+    "filters": [
+      "全部"
     ],
+    "items": [
+      {
+        "id": "PC—01",
+        "slug": "synora-agentic-erp",
+        "title": "Synora-Agentic-ERP",
+        "subtitle": "企业采购运营 Agent",
+        "positioning": "独立交付企业采购 Agent，将模型规划、工具调用与人工审批接入 ERP，以实际业务状态驱动采购闭环。",
+        "categoryEn": "Enterprise Agent",
+        "category": "Enterprise Agent",
+        "status": "真实 ERPNext 开发环境采购闭环已验收 · 持续迭代",
+        "time": "2026",
+        "role": "独立项目负责人",
+        "repoUrl": "https://github.com/atlax-tech/Synora-Agentic-ERP",
+        "accent": "amber",
+        "summary": "独立交付企业采购 Agent，将模型规划、工具调用与人工审批接入 ERP，以实际业务状态驱动采购闭环。",
+        "memorableLine": "Agent 的完成标准，应该是业务状态闭环，而不是一段“已完成”的回答。",
+        "homePoints": [
+          "15 个审批动作完成采购闭环",
+          "28 项进程故障测试通过",
+          "Planner / Reviewer 编排与质量评估"
+        ],
+        "whyBuilt": [
+          "企业采购包含订单、收货、开票和付款，单次工具调用成功无法证明整个业务目标完成。",
+          "我独立负责架构、阶段规划、工程约束和验收标准，将模型规划与 ERP 事务执行分离，并用 AI 编程工具加速实现、测试与方案讨论。"
+        ],
+        "productHypothesis": "Agent 的完成标准，应该是业务状态闭环，而不是一段“已完成”的回答。",
+        "interfaceConcept": "选择四个工程节点，查看设计边界、实现链路与结果证据。",
+        "editorialAngle": "企业 Agent 的价值，是把模型规划接入企业系统已有的权限、审批与事务规则。",
+        "designDecisions": [
+          {
+            "title": "模型编排与事务执行分离",
+            "description": "Python / FastAPI / Pydantic 强类型网关连接模型与 Frappe / ERPNext；自然语言目标转为数据查询、计划与动作提议，保留企业权限、审批和事务规则。"
+          },
+          {
+            "title": "可中断、可恢复的任务执行",
+            "description": "有工具白名单、参数校验与步数/时间预算的 ReAct 内核；Plan-and-Execute 通过 checkpoint、状态版本和调用记录支持澄清、中断及重启恢复。"
+          },
+          {
+            "title": "审批、幂等与未知结果对账",
+            "description": "动作状态机串联审批、执行前复验、幂等键和回执；响应丢失时避免重复建单，未知结果暂停执行并进入对账。"
+          },
+          {
+            "title": "评估驱动多 Agent 编排",
+            "description": "建立固定采购用例集，检查任务正确性、引用依据、拒答安全与恢复表现；对 Planner → Policy/Risk Reviewer 开展同模型 A/B，以质量、p95 延迟与 token 用量确定角色采用和回退策略。"
+          }
+        ],
+        "systemFlow": [
+          "采购目标与现状查询",
+          "计划与动作提议",
+          "人工审批及状态复验",
+          "ERP 执行与回执",
+          "业务结果核验与关闭"
+        ],
+        "engineeringProof": [
+          "真实 ERPNext 开发环境完成采购订单提交、两次部分收货、两张发票及三次付款，覆盖 15 个独立审批动作；以实际业务状态与未结金额驱动任务关闭。",
+          "完成 7 类动作 × 4 个故障位置的 28 项进程故障测试，28/28 通过；验证重放不重复建单、未知结果暂停并对账，支持执行中断后的恢复。",
+          "固定用例评估覆盖引用、拒答安全与恢复表现；以同模型 A/B 决策 Planner / Reviewer 的采用，并记录 p95 延迟与 token 使用量。",
+          "FTS5 / BM25 检索保留来源、版本与权限范围；以向量、混合检索与 Rerank 对照评估指导选型。"
+        ],
+        "learned": [
+          "企业 Agent 的价值，是把模型规划接入企业系统已有的权限、审批与事务规则。",
+          "失败恢复需要明确状态、幂等执行与结果对账，不能只靠重试。",
+          "采购任务是否关闭，应由实际收货、开票与未结金额驱动。"
+        ],
+        "currentStatus": "真实 ERPNext 开发环境采购闭环已验收 · 持续迭代",
+        "relatedNoteSlugs": [
+          "ai-agent-control-problem",
+          "rag-is-not-a-magic-memory",
+          "demo-is-not-product"
+        ],
+        "screens": [
+          {
+            "id": "01",
+            "name": "目标与计划",
+            "type": "engineering",
+            "description": "自然语言目标 → 查询 → 动作提议"
+          },
+          {
+            "id": "02",
+            "name": "审批与执行",
+            "type": "engineering",
+            "description": "人工审批 → 状态复验 → 幂等执行"
+          },
+          {
+            "id": "03",
+            "name": "异常与恢复",
+            "type": "engineering",
+            "description": "未知结果暂停 → ERP 对账 → 恢复"
+          },
+          {
+            "id": "04",
+            "name": "结果与验收",
+            "type": "engineering",
+            "description": "收货、开票与未结金额共同驱动关闭"
+          }
+        ],
+        "evidenceLinks": []
+      },
+      {
+        "id": "PC—02",
+        "slug": "harness-armor",
+        "title": "Harness Armor",
+        "subtitle": "AI 编程工作流与 Agent Skills",
+        "positioning": "设计 7 个 Agent Skills，将仓库上下文、变更边界与验收流程组织为可复用工作流。",
+        "categoryEn": "Agent Skills",
+        "category": "Agent Skills",
+        "status": "开源 v0.1.2 · 55/55 本地测试 · 12/12 CI 矩阵",
+        "time": "2026",
+        "role": "项目设计与开发",
+        "repoUrl": "https://github.com/atlax-tech/harness-armor",
+        "accent": "lime",
+        "summary": "设计 7 个 Agent Skills，将仓库上下文、变更边界与验收流程组织为可复用工作流。",
+        "memorableLine": "让 Agent 从仓库事实开始，在明确边界内交付，用独立验证结束。",
+        "homePoints": [
+          "7 个 Skills 组织工作流",
+          "语义理解与确定性校验分工",
+          "内容所有权与验证边界"
+        ],
+        "whyBuilt": [
+          "Coding Agent 反复探索仓库、使用过期上下文，容易在缺少统一工程约束和验收标准时偏离目标。",
+          "我把仓库地图、上下文建设、健康检查、更新与执行提示生成组织成 7 个 Skills，让 Agent 从同一份工程事实开始工作。"
+        ],
+        "productHypothesis": "让 Agent 从仓库事实开始，在明确边界内交付，用独立验证结束。",
+        "interfaceConcept": "选择四个工程节点，查看设计边界、实现链路与结果证据。",
+        "editorialAngle": "工程上下文应当能更新、能校验，而不是一次生成后永久信任。",
+        "designDecisions": [
+          {
+            "title": "7 个 Skills 组织工作流",
+            "description": "覆盖仓库地图、文档建立、补建、漂移更新、健康检查、执行提示与验证，把工程上下文和完成标准连接起来。"
+          },
+          {
+            "title": "语义理解与确定性校验分工",
+            "description": "Agent 理解语义，Python / Node.js 工具负责清点与校验；用文件指纹检测文档漂移，生成文件级更新计划。"
+          },
+          {
+            "title": "内容所有权与验证边界",
+            "description": "通过内容所有权和冲突保护控制自动修改，拆分执行、测试与评审角色，保留可检查的交付证据。"
+          }
+        ],
+        "systemFlow": [
+          "仓库事实清点",
+          "工程上下文建立",
+          "漂移与健康检查",
+          "约束内执行",
+          "独立测试与评审"
+        ],
+        "engineeringProof": [
+          "v0.1.2 完成 55/55 本地测试。",
+          "12/12 GitHub Actions 跨平台矩阵任务通过，覆盖 Ubuntu、macOS、Windows 与 Node.js 18/22、Python 3.9/3.12。",
+          "提供 Claude Code、Codex 等客户端的 Skills 安装布局。"
+        ],
+        "learned": [
+          "工程上下文应当能更新、能校验，而不是一次生成后永久信任。",
+          "语义任务交给 Agent，清点与校验交给确定性工具。",
+          "执行、测试和评审分离，让完成有独立证据。"
+        ],
+        "currentStatus": "开源 v0.1.2 · 55/55 本地测试 · 12/12 CI 矩阵",
+        "relatedNoteSlugs": [
+          "harness-engineering-is-not-prompt-template",
+          "codex-and-claude-code-are-not-ides"
+        ],
+        "screens": [
+          {
+            "id": "01",
+            "name": "Repository Map",
+            "type": "engineering",
+            "description": "从仓库事实建立上下文"
+          },
+          {
+            "id": "02",
+            "name": "Skills Assembly",
+            "type": "engineering",
+            "description": "7 个 Skills 组织工程流程"
+          },
+          {
+            "id": "03",
+            "name": "Execution Boundary",
+            "type": "engineering",
+            "description": "内容所有权与冲突保护"
+          },
+          {
+            "id": "04",
+            "name": "Verification",
+            "type": "engineering",
+            "description": "独立执行、测试与评审"
+          }
+        ],
+        "evidenceLinks": []
+      },
+      {
+        "id": "PC—03",
+        "slug": "codex-with-chatgpt",
+        "title": "codex-with-chatgpt",
+        "subtitle": "项目级会话架构与 Bridge 运行状态机",
+        "positioning": "贡献分层会话架构和运行状态机代码，改善长期任务上下文组织与连接稳定性。",
+        "categoryEn": "Agent Infrastructure",
+        "category": "Agent Infrastructure",
+        "status": "架构与状态机改进进入上游 · v0.1.0 / v0.1.2 特别感谢",
+        "time": "2026",
+        "role": "会话架构与代码贡献 · 状态机设计与修复",
+        "repoUrl": "https://github.com/XiaoDuoYa/codex-with-chatgpt",
+        "accent": "cobalt",
+        "summary": "贡献分层会话架构和运行状态机代码，改善长期任务上下文组织与连接稳定性。",
+        "memorableLine": "上下文需要按任务组织，恢复动作需要由明确状态驱动。",
+        "homePoints": [
+          "项目级会话架构与代码",
+          "healthy / stopped / unknown 三态",
+          "恢复控制保护既有连接"
+        ],
+        "whyBuilt": [
+          "单一长对话难以承载多个项目和持续任务，需要明确项目绑定、会话生命周期及上下文交接。",
+          "Bridge 健康探测失败被等同于进程停止，会触发重复启动与不必要的连接器重建，让自动恢复反而中断工作流。"
+        ],
+        "productHypothesis": "上下文需要按任务组织，恢复动作需要由明确状态驱动。",
+        "interfaceConcept": "选择四个工程节点，查看设计边界、实现链路与结果证据。",
+        "editorialAngle": "项目上下文与会话生命周期是 Agent 基础设施的架构问题。",
+        "designDecisions": [
+          {
+            "title": "项目级会话架构与代码",
+            "description": "设计并贡献 Workspace → ChatGPT Project → Session Chat 分层会话架构，覆盖状态持久化、CLI 接入、会话切换和旧模式兼容。"
+          },
+          {
+            "title": "healthy / stopped / unknown 三态",
+            "description": "定位探测误判根因，设计并提交三态诊断与恢复控制代码，区分暂时不可探测与进程退出。"
+          },
+          {
+            "title": "恢复控制保护既有连接",
+            "description": "修复误判触发的重复 Bridge 启动与连接器重建问题，保留既有连接，避免恢复过程扩大故障。"
+          }
+        ],
+        "systemFlow": [
+          "Workspace 项目边界",
+          "ChatGPT Project 绑定",
+          "Session Chat 生命周期",
+          "Bridge 三态诊断",
+          "按状态恢复与上下文交接"
+        ],
+        "engineeringProof": [
+          "会话架构与代码贡献进入上游实现；架构提交 81673ef 记录相关协作。",
+          "PR #43 提交状态机修复，上游提交 d6d0dd4 吸收诊断与恢复控制改进。",
+          "在相关提交中列为共同作者，并在 v0.1.0 与 v0.1.2 发布说明中获特别感谢。"
+        ],
+        "learned": [
+          "项目上下文与会话生命周期是 Agent 基础设施的架构问题。",
+          "探测失败不是进程停止；未知状态应保留连接并继续诊断。",
+          "自动恢复的首要目标是维持可用性，避免重复连接与不必要重建。"
+        ],
+        "currentStatus": "架构与状态机改进进入上游 · v0.1.0 / v0.1.2 特别感谢",
+        "relatedNoteSlugs": [
+          "ai-agent-control-problem",
+          "codex-and-claude-code-are-not-ides"
+        ],
+        "screens": [
+          {
+            "id": "01",
+            "name": "会话分层",
+            "type": "engineering",
+            "description": "Workspace → Project → Session"
+          },
+          {
+            "id": "02",
+            "name": "上下文交接",
+            "type": "engineering",
+            "description": "持久化、切换与旧模式兼容"
+          },
+          {
+            "id": "03",
+            "name": "三态诊断",
+            "type": "engineering",
+            "description": "healthy / stopped / unknown"
+          },
+          {
+            "id": "04",
+            "name": "恢复控制",
+            "type": "engineering",
+            "description": "防止重复启动与连接器重建"
+          }
+        ],
+        "evidenceLinks": [
+          {
+            "label": "会话架构提交",
+            "url": "https://github.com/XiaoDuoYa/codex-with-chatgpt/commit/81673ef9dfedf7681595cf3a34b713fe7db80dab"
+          },
+          {
+            "label": "状态机 PR #43",
+            "url": "https://github.com/XiaoDuoYa/codex-with-chatgpt/pull/43"
+          },
+          {
+            "label": "上游状态机实现",
+            "url": "https://github.com/XiaoDuoYa/codex-with-chatgpt/commit/d6d0dd4e866fd9253572fcf84d8414132838d6f9"
+          },
+          {
+            "label": "v0.1.0 发布说明",
+            "url": "https://github.com/XiaoDuoYa/codex-with-chatgpt/releases/tag/v0.1.0"
+          },
+          {
+            "label": "v0.1.2 发布说明",
+            "url": "https://github.com/XiaoDuoYa/codex-with-chatgpt/releases/tag/v0.1.2"
+          }
+        ]
+      },
+      {
+        "id": "PC—04",
+        "slug": "dsh-desktop",
+        "title": "dsh-desktop",
+        "subtitle": "自定义模型推理强度配置兼容性修复",
+        "positioning": "修复推理强度配置从保存到模型选择器的传递链路，完成上游合并。",
+        "categoryEn": "Model Integration",
+        "category": "Model Integration",
+        "status": "PR #291 已合并",
+        "time": "2026",
+        "role": "代码贡献 · 回归验证",
+        "repoUrl": "https://github.com/dataelement/dsh-desktop/pull/291",
+        "accent": "amber",
+        "summary": "修复推理强度配置从保存到模型选择器的传递链路，完成上游合并。",
+        "memorableLine": "配置保存只是起点，正确进入实际调用链路才是完成。",
+        "homePoints": [
+          "统一适配器规范字段",
+          "兼容旧配置与级别别名",
+          "回归与真实调用验证"
+        ],
+        "whyBuilt": [
+          "自定义模型的推理强度配置保存后，未能正确进入模型选择器，导致配置值与可使用能力不一致。",
+          "我沿配置字段、旧数据迁移、级别别名和模型对象传递链路定位并修复兼容性问题。"
+        ],
+        "productHypothesis": "配置保存只是起点，正确进入实际调用链路才是完成。",
+        "interfaceConcept": "选择四个工程节点，查看设计边界、实现链路与结果证据。",
+        "editorialAngle": "模型集成需要贯通配置、UI 选择与 Provider 调用。",
+        "designDecisions": [
+          {
+            "title": "统一适配器规范字段",
+            "description": "统一为 reasoningEfforts，让自定义模型配置与适配器契约保持一致。"
+          },
+          {
+            "title": "兼容旧配置与级别别名",
+            "description": "处理旧配置迁移和级别别名，保留完整模型配置传递。"
+          },
+          {
+            "title": "回归与真实调用验证",
+            "description": "补充 9 项针对性回归测试，完成类型检查、构建与 Ollama 自定义 Provider 真实调用验证。"
+          }
+        ],
+        "systemFlow": [
+          "自定义模型配置",
+          "字段规范与迁移",
+          "级别别名归一",
+          "模型选择器传递",
+          "Provider 调用验证"
+        ],
+        "engineeringProof": [
+          "PR #291 已合入上游主分支。",
+          "补充 9 项针对性回归测试，覆盖配置兼容与传递路径。",
+          "完成类型检查、构建与 Ollama 自定义 Provider 真实调用验证。"
+        ],
+        "learned": [
+          "模型集成需要贯通配置、UI 选择与 Provider 调用。",
+          "迁移和别名兼容应在字段契约中解决。",
+          "针对性回归与真实调用共同验证修复结果。"
+        ],
+        "currentStatus": "PR #291 已合并",
+        "relatedNoteSlugs": [
+          "codex-and-claude-code-are-not-ides"
+        ],
+        "screens": [
+          {
+            "id": "01",
+            "name": "配置契约",
+            "type": "engineering",
+            "description": "reasoningEfforts 规范字段"
+          },
+          {
+            "id": "02",
+            "name": "兼容迁移",
+            "type": "engineering",
+            "description": "旧配置与级别别名"
+          },
+          {
+            "id": "03",
+            "name": "链路传递",
+            "type": "engineering",
+            "description": "完整模型配置进入选择器"
+          },
+          {
+            "id": "04",
+            "name": "验证与合并",
+            "type": "engineering",
+            "description": "9 项回归与真实 Provider 调用"
+          }
+        ],
+        "evidenceLinks": [
+          {
+            "label": "已合并 PR #291",
+            "url": "https://github.com/dataelement/dsh-desktop/pull/291"
+          }
+        ]
+      }
+    ]
   },
-  notes: {
-    count: "03 / 04",
-    title: "观察笔记",
-    description: "围绕 AI 产品、工作流与知识系统沉淀的研究笔记、待发布草稿与公开文章。",
-    months: [
-      { value: "2026 / 07", count: "00" },
-      { value: "2026 / 06", count: "04" },
-      { value: "2026 / 05", count: "03" },
-      { value: "2026 / 04", count: "02" },
-      { value: "2026 / 03", count: "03" },
-      { value: "2026 / 02", count: "02" },
-      { value: "2026 / 01", count: "01" },
+  "notes": {
+    "count": "03 / 04",
+    "title": "Agent 工程笔记",
+    "description": "围绕控制边界、上下文、检索与验收，记录从产品判断到工程实践的思考。",
+    "months": [
+      {
+        "value": "2026 / 07",
+        "count": "00"
+      },
+      {
+        "value": "2026 / 06",
+        "count": "01"
+      },
+      {
+        "value": "2026 / 05",
+        "count": "01"
+      },
+      {
+        "value": "2026 / 04",
+        "count": "00"
+      },
+      {
+        "value": "2026 / 03",
+        "count": "01"
+      },
+      {
+        "value": "2026 / 02",
+        "count": "02"
+      },
+      {
+        "value": "2026 / 01",
+        "count": "01"
+      }
     ],
-    items: [
+    "items": [
       {
-        id: "note-01",
-        slug: "demo-is-not-product",
-        month: "2026 / 06",
-        researchWindow: "2026 / 06",
-        publishedAt: "2026-06-29",
-        title: "产品还是多巴胺？要看你怎么定义",
-        summary:
-          "Vibe Coding 等工具虽能快速将想法转化为 demo，但真正挑战在于如何精准定位用户、包装产品并验证市场。",
-        type: "Observation",
-        status: "Published",
-        tags: ["vibe coding", "产品思维", "AI 工具", "独立开发"],
-        method: "产品观察 · 概念验证",
-        signal: "demo 完成度不等于市场匹配度",
-        question: "如何从「做出来了」走向「有人愿意用」？",
-        sourceLink: "https://www.xiaohongshu.com/explore/6a427bcc000000001603ecd6?xsec_token=AByKSQmk-rOAXh0xnkQsWW7FHLcJyiw6lTf21pM41BAA0=&xsec_source=pc_user",
-        relatedWorkSlugs: ["harness-armor"],
+        "id": "note-01",
+        "slug": "demo-is-not-product",
+        "month": "2026 / 06",
+        "researchWindow": "2026 / 06",
+        "publishedAt": "2026-06-29",
+        "title": "产品还是多巴胺？要看你怎么定义",
+        "summary": "Vibe Coding 等工具虽能快速将想法转化为 demo，但真正挑战在于如何精准定位用户、包装产品并验证市场。",
+        "type": "Observation",
+        "status": "技术笔记",
+        "tags": [
+          "vibe coding",
+          "产品思维",
+          "AI 工具",
+          "独立开发"
+        ],
+        "method": "产品观察 · 概念验证",
+        "signal": "demo 完成度不等于市场匹配度",
+        "question": "如何从「做出来了」走向「有人愿意用」？",
+        "sourceLink": null,
+        "relatedWorkSlugs": [
+          "synora-agentic-erp"
+        ]
       },
       {
-        id: "note-02",
-        slug: "agent-matrix-does-not-equal-company",
-        month: "2026 / 06",
-        researchWindow: "2026 / 06",
-        publishedAt: "2026-06-27",
-        title: "一人公司 + AI Agents 矩阵 = 自动赚钱？",
-        summary:
-          "Agent 在个人生产力提升上确实有价值，但「多 Agent 自动赚钱」大概率是过度包装。",
-        type: "Field Note",
-        status: "Published",
-        tags: ["AI Agent", "一人公司", "独立开发", "AI 工作流"],
-        method: "实践反思 · 概念澄清",
-        signal: "Agent 适合确定性流程，不适合商业闭环",
-        question: "哪些环节必须留给人做判断？",
-        sourceLink: "https://www.xiaohongshu.com/explore/6a3eb0000000000017008ab5?xsec_token=ABtK_DtGW4dM56i7cRiJO-5gW-whDYJztfxS8R6BG44Dc=&xsec_source=pc_user",
-        relatedWorkSlugs: ["harness-armor", "agent-dock"],
+        "id": "note-03",
+        "slug": "codex-and-claude-code-are-not-ides",
+        "month": "2026 / 05",
+        "researchWindow": "2026 / 05",
+        "plannedPublish": "Ready for editorial review",
+        "title": "Codex 和 Claude Code 不是新版 IDE，它们在重写“开发者的工作边界”",
+        "summary": "AI 编程工具的变化不只是补全更强，而是把任务定义、上下文组织、测试与验收推到开发工作的中心。",
+        "type": "Agentic Coding",
+        "status": "技术笔记",
+        "tags": [
+          "Codex",
+          "Claude Code",
+          "AI IDE",
+          "Agentic Coding"
+        ],
+        "method": "产品对比 · 工作流拆解",
+        "signal": "开发者从代码生产者转向任务定义者与验收者",
+        "question": "当 AI 可以执行任务，开发者最稀缺的能力还是什么？",
+        "sourceLink": "https://openai.com/index/harness-engineering/",
+        "relatedWorkSlugs": [
+          "harness-armor",
+          "codex-with-chatgpt",
+          "dsh-desktop"
+        ]
       },
       {
-        id: "note-03",
-        slug: "codex-and-claude-code-are-not-ides",
-        month: "2026 / 05",
-        researchWindow: "2026 / 05",
-        plannedPublish: "Ready for editorial review",
-        title: "Codex 和 Claude Code 不是新版 IDE，它们在重写“开发者的工作边界”",
-        summary:
-          "AI 编程工具的变化不只是补全更强，而是把任务定义、上下文组织、测试与验收推到开发工作的中心。",
-        type: "Agentic Coding",
-        status: "Ready to publish",
-        tags: ["Codex", "Claude Code", "AI IDE", "Agentic Coding"],
-        method: "产品对比 · 工作流拆解",
-        signal: "开发者从代码生产者转向任务定义者与验收者",
-        question: "当 AI 可以执行任务，开发者最稀缺的能力还是什么？",
-        sourceLink: "https://openai.com/index/harness-engineering/",
-        relatedWorkSlugs: ["harness-armor"],
+        "id": "note-06",
+        "slug": "ai-agent-control-problem",
+        "month": "2026 / 03",
+        "researchWindow": "2026 / 03",
+        "plannedPublish": "Ready for editorial review",
+        "title": "AI Agent 真正难的不是智能，而是可控",
+        "summary": "Agent 的瓶颈不是能不能行动，而是用户能否看见过程、设置边界、验收结果，并在出错时及时叫停。",
+        "type": "Agent Workflow",
+        "status": "技术笔记",
+        "tags": [
+          "AI Agent",
+          "Workflow",
+          "Trust",
+          "Human in the loop"
+        ],
+        "method": "实践复盘 · 控制点拆解",
+        "signal": "自主性越高，状态可见与失败回滚越重要",
+        "question": "一个 Agent 在什么节点必须把决定权还给人？",
+        "sourceLink": "https://www.anthropic.com/engineering/claude-code-auto-mode",
+        "relatedWorkSlugs": [
+          "synora-agentic-erp",
+          "codex-with-chatgpt"
+        ]
       },
       {
-        id: "note-04",
-        slug: "openai-vs-anthropic-product-rhythm",
-        month: "2026 / 05",
-        researchWindow: "2026 / 05",
-        plannedPublish: "Pending final fact check",
-        title: "OpenAI 和 Anthropic 争的不是模型参数，而是谁先占住工作流",
-        summary:
-          "模型新闻越来越密集，真正值得比较的不是参数榜单，而是产品正在接管写作、编程、研究与协作中的哪些入口。",
-        type: "News Analysis",
-        status: "Draft",
-        tags: ["OpenAI", "Anthropic", "ChatGPT", "Claude", "工作流"],
-        method: "官方更新核对 · 工作流映射",
-        signal: "竞争焦点从单次回答迁移到持续任务",
-        question: "一次模型更新究竟改变了哪段真实工作流？",
-        sourceLink: "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
-        relatedWorkSlugs: ["harness-armor"],
+        "id": "note-09",
+        "slug": "harness-engineering-is-not-prompt-template",
+        "month": "2026 / 02",
+        "researchWindow": "2026 / 02",
+        "plannedPublish": "Ready for editorial review",
+        "title": "Harness Engineering 不是提示词模板，而是给 AI 上安全带",
+        "summary": "Prompt 负责说明任务，Harness 负责组织权限、工具、数据、评估、反馈与回滚，让 Agent 的能力落在可控轨道上。",
+        "type": "Technical Translation",
+        "status": "技术笔记",
+        "tags": [
+          "Harness Engineering",
+          "AI Agent",
+          "Workflow",
+          "安全约束"
+        ],
+        "method": "概念转译 · 系统边界拆解",
+        "signal": "Agent 能力开始取决于模型之外的运行环境",
+        "question": "当 AI 更能行动时，谁来规定它不能做什么？",
+        "sourceLink": "https://openai.com/index/harness-engineering/",
+        "relatedWorkSlugs": [
+          "harness-armor"
+        ]
       },
       {
-        id: "note-05",
-        slug: "ai-model-news-is-not-enough",
-        month: "2026 / 06",
-        researchWindow: "2026 / 06",
-        publishedAt: "2026-07-01",
-        title: "GPT-5.6发布了，然后呢？",
-        summary:
-          "AI 模型新闻铺天盖地，但普通人真正该关心的是：跑分是否靠谱、报道的能力是不是自己用的能力、以及实际成本是涨了还是跌了。",
-        type: "News Analysis",
-        status: "Published",
-        tags: ["AI News", "模型发布", "产品入口", "技术转译"],
-        method: "新闻拆解 · 用户影响评估",
-        signal: "参数叙事正在让位于使用方式与入口变化",
-        question: "这次更新让普通用户多做成了什么，还是只多记住了一个名字？",
-        sourceLink:
-          "https://www.xiaohongshu.com/explore/6a43f9a5000000001700a63f?app_platform=ios&app_version=9.25&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBteAwjda3YQQ1_SrpUP8-Dv5zvyIwsyW1qkcRqBCmqEQ%3D&author_share=1&xhsshare=CopyLink&shareRedId=N0w4ODU3Nj82NzUyOTgwNjY0OTc9Njg-&apptime=1782841461&share_id=ff070fba9316435796edfaacd014d161",
-        relatedWorkSlugs: [],
+        "id": "note-10",
+        "slug": "prompt-engineering-after-ai-gets-smarter",
+        "month": "2026 / 02",
+        "researchWindow": "2026 / 02",
+        "plannedPublish": "Ready for editorial review",
+        "title": "模型越聪明，Prompt Engineering 越不像咒语",
+        "summary": "Prompt Engineering 不是背诵万能句式，而是把任务、上下文、约束和验收标准写成可执行的说明书。",
+        "type": "Method Note",
+        "status": "技术笔记",
+        "tags": [
+          "Prompt Engineering",
+          "Workflow",
+          "Thinking",
+          "Prompt Graveyard"
+        ],
+        "method": "反例复盘 · 任务说明拆解",
+        "signal": "提示词技巧正在回归清晰表达与验收设计",
+        "question": "如果结果无法验收，再漂亮的提示词有什么用？",
+        "sourceLink": "",
+        "relatedWorkSlugs": [
+          "harness-armor"
+        ]
       },
       {
-        id: "note-06",
-        slug: "ai-agent-control-problem",
-        month: "2026 / 03",
-        researchWindow: "2026 / 03",
-        plannedPublish: "Ready for editorial review",
-        title: "AI Agent 真正难的不是智能，而是可控",
-        summary: "Agent 的瓶颈不是能不能行动，而是用户能否看见过程、设置边界、验收结果，并在出错时及时叫停。",
-        type: "Agent Workflow",
-        status: "Ready to publish",
-        tags: ["AI Agent", "Workflow", "Trust", "Human in the loop"],
-        method: "实践复盘 · 控制点拆解",
-        signal: "自主性越高，状态可见与失败回滚越重要",
-        question: "一个 Agent 在什么节点必须把决定权还给人？",
-        sourceLink: "https://www.anthropic.com/engineering/claude-code-auto-mode",
-        relatedWorkSlugs: ["harness-armor", "agent-dock"],
-      },
-      {
-        id: "note-07",
-        slug: "what-to-ask-after-ai-product-goes-viral",
-        month: "2026 / 04",
-        researchWindow: "2026 / 04",
-        title: "一个 AI 产品爆火后，我们到底应该问什么？",
-        summary: "热点不是选题本身。编辑真正要回答的是：它是否真实有用、是否改变工作流，以及普通人为什么需要关心。",
-        type: "APPSO Sample",
-        status: "Backlog",
-        tags: ["AI Product", "Editorial Judgment", "APPSO Sample", "热点分析"],
-        method: "热点筛选 · 产品判断框架",
-        signal: "传播速度与产品价值正在被混为一谈",
-        question: "热度消失以后，用户还会留下什么？",
-        sourceLink: "",
-        relatedWorkSlugs: [],
-      },
-      {
-        id: "note-08",
-        slug: "why-ai-tools-are-abandoned-after-two-days",
-        month: "2026 / 03",
-        researchWindow: "2026 / 03",
-        title: "为什么很多 AI 工具用两天就被放弃？",
-        summary: "很多 AI 工具并非能力不够，而是无法进入用户已有工作流，最终输给迁移成本、信任成本与结果整理成本。",
-        type: "Product Backlog",
-        status: "Backlog",
-        tags: ["AI Product", "Retention", "User Workflow", "产品判断"],
-        method: "用户路径 · 留存摩擦拆解",
-        signal: "惊艳的首次体验没有转化为重复使用",
-        question: "用户第二天为什么还要回来？",
-        sourceLink: "",
-        relatedWorkSlugs: [],
-      },
-      {
-        id: "note-09",
-        slug: "harness-engineering-is-not-prompt-template",
-        month: "2026 / 02",
-        researchWindow: "2026 / 02",
-        plannedPublish: "Ready for editorial review",
-        title: "Harness Engineering 不是提示词模板，而是给 AI 上安全带",
-        summary: "Prompt 负责说明任务，Harness 负责组织权限、工具、数据、评估、反馈与回滚，让 Agent 的能力落在可控轨道上。",
-        type: "Technical Translation",
-        status: "Ready to publish",
-        tags: ["Harness Engineering", "AI Agent", "Workflow", "安全约束"],
-        method: "概念转译 · 系统边界拆解",
-        signal: "Agent 能力开始取决于模型之外的运行环境",
-        question: "当 AI 更能行动时，谁来规定它不能做什么？",
-        sourceLink: "https://openai.com/index/harness-engineering/",
-        relatedWorkSlugs: ["harness-armor"],
-      },
-      {
-        id: "note-10",
-        slug: "prompt-engineering-after-ai-gets-smarter",
-        month: "2026 / 02",
-        researchWindow: "2026 / 02",
-        plannedPublish: "Ready for editorial review",
-        title: "模型越聪明，Prompt Engineering 越不像咒语",
-        summary: "Prompt Engineering 不是背诵万能句式，而是把任务、上下文、约束和验收标准写成可执行的说明书。",
-        type: "Method Note",
-        status: "Ready to publish",
-        tags: ["Prompt Engineering", "Workflow", "Thinking", "Prompt Graveyard"],
-        method: "反例复盘 · 任务说明拆解",
-        signal: "提示词技巧正在回归清晰表达与验收设计",
-        question: "如果结果无法验收，再漂亮的提示词有什么用？",
-        sourceLink: "",
-        relatedWorkSlugs: [],
-      },
-      {
-        id: "note-11",
-        slug: "rag-is-not-a-magic-memory",
-        month: "2026 / 01",
-        researchWindow: "2026 / 01",
-        plannedPublish: "Ready for editorial review",
-        title: "RAG 不是给 AI 装记忆，它更像给 AI 建资料室",
-        summary: "RAG 的价值不是让模型凭空记住更多，而是让它在可追溯、可更新、可验证的资料环境里寻找依据。",
-        type: "Technical Translation",
-        status: "Ready to publish",
-        tags: ["RAG", "Knowledge Base", "AI Memory", "MindDock"],
-        method: "概念辨析 · 失败链路拆解",
-        signal: "知识系统的质量由资料治理与检索链路共同决定",
-        question: "AI 找到了资料，为什么仍然可能答错？",
-        sourceLink: "",
-        relatedWorkSlugs: ["minddock"],
-      },
-      {
-        id: "note-12",
-        slug: "karpathy-llm-wiki-and-personal-knowledge-base",
-        month: "2026 / 04",
-        researchWindow: "2026 / 04",
-        plannedPublish: "Ready for editorial review",
-        title: "从 Karpathy 的 LLM Wiki 想到：个人知识库不是仓库，而是训练场",
-        summary: "个人知识库的重点不是收藏更多内容，而是让资料持续被整理、被提问、被关联，并再次进入人的思考。",
-        type: "Knowledge System",
-        status: "Ready to publish",
-        tags: ["Karpathy", "LLM Wiki", "Personal Knowledge Base", "MindDock"],
-        method: "来源核对 · 个人系统复盘",
-        signal: "知识管理从存储转向持续编译与复用",
-        question: "被保存的内容，如何真正变成下一次判断的材料？",
-        sourceLink: "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f",
-        relatedWorkSlugs: ["minddock"],
-      },
-      {
-        id: "note-13",
-        slug: "ai-bubble-us-debt-crisis-2008",
-        month: "2026 / 06",
-        researchWindow: "2026 / 06",
-        publishedAt: "2026-06-30",
-        title: "AI泡沫破裂+美债危机=比2008更惨？",
-        summary:
-          "高志凯预言2026年底到2027年上半年可能爆发比2008更严重的金融危机。搜了三天数据后，发现美债、AI泡沫和私人信贷三个脆弱点确实在共振。",
-        type: "Economic Analysis",
-        status: "Draft",
-        tags: ["AI泡沫", "美债危机", "金融危机", "经济分析", "内容实验"],
-        method: "数据核查 · 观点整理",
-        signal: "AI 投入产出失衡、美债利息压力与私人信贷违约率上升正在形成共振",
-        question: "如果高志凯的预言成真，普通人现在该做什么准备？",
-        sourceLink: "",
-        relatedWorkSlugs: [],
-      },
-      {
-        id: "note-14",
-        slug: "knowledge-base-is-not-warehouse",
-        month: "2026 / 05",
-        researchWindow: "2026 / 05",
-        publishedAt: "2026-05-28",
-        title: "我花了半年才想明白的事——知识库不是仓库",
-        summary:
-          "从 Obsidian 装修工到真正搭建自生长知识库的完整记录，围绕 Karpathy LLM Wiki 的三层架构反思个人实践中的三个错误与三根心脉。",
-        type: "Field Note",
-        status: "Published",
-        tags: ["知识管理", "LLM Wiki", "个人知识库", "MindDock"],
-        method: "个人复盘 · 知识库实践",
-        signal: "知识库的价值从存储转向持续复用",
-        question: "收藏的东西，怎么才能重新进入思考？",
-        sourceLink: "",
-        relatedWorkSlugs: [],
-      },
-      {
-        id: "note-15",
-        slug: "openclaw-control-and-asset-defense",
-        month: "2026 / 03",
-        researchWindow: "2026 / 03",
-        publishedAt: "2026-03-30",
-        title: "当AI开始替你做事——OpenClaw爆火背后的控制问题与资产保卫战",
-        summary:
-          "从 OpenClaw 爆红看 Agent 时代控制权、安全边界与用户资产保护的真实挑战。",
-        type: "Agent Security",
-        status: "Published",
-        tags: ["AI Agent", "OpenClaw", "安全风险", "控制设计", "资产保护"],
-        method: "事件追踪 · 风险框架拆解",
-        signal: "Agent 能力越底层，控制设计与资产保护越紧迫",
-        question: "当 AI 能真正替你做事时，谁来守住你的资产边界？",
-        sourceLink: "",
-        relatedWorkSlugs: [],
-      },
-    ],
+        "id": "note-11",
+        "slug": "rag-is-not-a-magic-memory",
+        "month": "2026 / 01",
+        "researchWindow": "2026 / 01",
+        "plannedPublish": "Ready for editorial review",
+        "title": "RAG 不是给 AI 装记忆，它更像给 AI 建资料室",
+        "summary": "RAG 的价值不是让模型凭空记住更多，而是让它在可追溯、可更新、可验证的资料环境里寻找依据。",
+        "type": "Technical Translation",
+        "status": "技术笔记",
+        "tags": [
+          "RAG",
+          "Knowledge Base",
+          "AI Memory",
+          "Context Engineering"
+        ],
+        "method": "概念辨析 · 失败链路拆解",
+        "signal": "知识系统的质量由资料治理与检索链路共同决定",
+        "question": "AI 找到了资料，为什么仍然可能答错？",
+        "sourceLink": "",
+        "relatedWorkSlugs": [
+          "synora-agentic-erp"
+        ]
+      }
+    ]
   },
-  about: {
-    count: "01 / 04",
-    title: "关于我",
-    label: "ABOUT ME",
-    lead: "Hi ：》我是路启隆。欢迎来看我的主页。",
-    bio: [
-      "我毕业于阿德莱德大学（Adelaide University）计算机科学专业，于 2021 年获得学士学位。",
-      "我做过企业 ERP 后端开发与敏捷交付，有复杂系统开发经验。现在以独立开发者身份经营 ATLAX-TECH / AI 资讯研究所。",
-      "我对科技圈的新鲜事物有强烈好奇心，喜欢尝试新工具与新方法。但我不是信仰者，更关注实际效果与用户价值。",
+  "about": {
+    "count": "01 / 04",
+    "title": "关于我",
+    "label": "ABOUT ME",
+    "lead": "Hi ：》我是路启隆。欢迎来看我的主页。",
+    "bio": [
+      "我毕业于阿德莱德大学计算机科学专业，获得学士学位。",
+      "我曾在华为从事 ERP 后端与系统交付，在 ThoughtWorks 参与软件开发与敏捷交付。现在在 AtlaxTech 专注 AI Agent 应用工程。",
+      "我的工作重点是 Agent 编排、上下文工程与运行可靠性，把模型能力接入企业业务和开发者工作流。"
     ],
-    philosophy: {
-      quote: "我认为最好的技术应该具有人的温度。科技的发展，应该让用户感受不到科技的存在。",
-      emphasis:
-        "我关心的不是 AI 概念看起来有多强，而是谁会用、怎么用、能不能持续用，以及人如何验收它做得对不对。",
+    "philosophy": {
+      "quote": "我认为最好的技术应该具有人的温度。科技的发展，应该让用户感受不到科技的存在。",
+      "emphasis": "我关心 Agent 能否承接真实工作：权限是否明确、状态是否可见、失败能否恢复、结果能否验收。"
     },
-    approach: [
-      "我体验过各种热门 AI 产品与 Agent 工作流，也亲手搭过自己的概念产品原型。这让我能在技术实现、产品体验和用户场景之间做更精准的判断与转译。",
-      "我习惯把「看起来很强」的 AI 概念拆成可验证的问题：谁会用、怎么用、能不能持续用、出错时如何叫停与回滚。",
-      "我的优势是既能理解复杂系统与代码边界，也能站在读者和用户视角做内容表达——把技术变化转译成可判断、可传播、可行动的产品叙事。",
+    "approach": [
+      "我独立负责 Synora-Agentic-ERP 的架构、阶段规划与交付验收，将采购目标拆成模型规划、工具调用、人工审批和 ERP 结果验证。",
+      "我设计 Harness Armor，并向 codex-with-chatgpt 贡献项目级会话架构及状态机代码，向 dsh-desktop 贡献模型配置兼容性修复。",
+      "我的优势是把企业系统经验转化为 Agent 工程能力：既能设计业务与接口边界，也能实现上下文、执行和恢复链路。",
       "花径不曾缘客扫，蓬门今始为君开",
-      "到这儿，若您有了一点点的兴趣，欢迎继续下滑看到更多的我。",
+      "欢迎继续阅读我的项目、代码贡献与技术思考。"
     ],
-    capabilities: [
+    "capabilities": [
       {
-        id: "01",
-        title: "产品判断",
-        description: "判断 AI 能力是否真正进入工作流，而不只是完成演示",
+        "id": "01",
+        "title": "Agent 编排",
+        "description": "LLM API、Tool Calling、ReAct 与可恢复的 Plan-and-Execute"
       },
       {
-        id: "02",
-        title: "技术转译",
-        description: "把模型、Agent 和开发者工具转译为普通读者能判断的产品问题",
+        "id": "02",
+        "title": "上下文工程",
+        "description": "项目级会话组织、仓库上下文与保留来源和权限的检索"
       },
       {
-        id: "03",
-        title: "选题策划",
-        description: "从热度、用户疑问与产品变化中提炼值得跟进的编辑角度",
+        "id": "03",
+        "title": "执行可靠性",
+        "description": "审批、状态复验、幂等、回执与异常对账"
       },
       {
-        id: "04",
-        title: "原型表达",
-        description: "把模糊概念拆成功能边界、界面结构与可展示的产品 Demo",
+        "id": "04",
+        "title": "企业系统集成",
+        "description": "Python / FastAPI / Pydantic，Frappe / ERPNext 与 HTTP API"
       },
       {
-        id: "05",
-        title: "工作流拆解",
-        description: "从复杂系统交付经验出发，识别权限、协作、验收与失败出口",
-      },
+        "id": "05",
+        "title": "工程交付",
+        "description": "LLM 输出评估、同模型 A/B、故障注入与跨平台 CI"
+      }
     ],
-    methods: [
+    "methods": [
       {
-        id: "01",
-        title: "信号捕捉",
-        description: "追踪产品更新、开发者社区与用户真实疑问。",
+        "id": "01",
+        "title": "定义目标",
+        "description": "从业务目标明确范围、约束和验收标准。"
       },
       {
-        id: "02",
-        title: "结构判断",
-        description: "把看起来很强的概念拆成谁会用、怎么用和为什么留下。",
+        "id": "02",
+        "title": "设计边界",
+        "description": "拆分模型规划、工具权限与事务执行。"
       },
       {
-        id: "03",
-        title: "产品验证",
-        description: "用原型、失败路径和验收节点检查概念能否进入真实工作。",
+        "id": "03",
+        "title": "实现链路",
+        "description": "借助 AI 编程工具推进代码、测试与联调。"
       },
       {
-        id: "04",
-        title: "内容输出",
-        description: "把产品变化转化为读者能理解、能判断且值得记住的叙事。",
-      },
+        "id": "04",
+        "title": "证据验收",
+        "description": "检查实际业务状态，覆盖异常与恢复路径。"
+      }
     ],
-    contact: {
-      email: "atlax-tech@outlook.com",
-      phone: "+86 199 0373 3819",
-      social: "@Atlax-Tech",
-      socialMark: "XHS",
-      socialUrl: "https://www.xiaohongshu.com/user/profile/5f6822260000000001009125",
-      location: "Xi'an, China",
-    },
-  },
+    "contact": {
+      "email": "atlax-tech@outlook.com",
+      "phone": "+86 199 0373 3819",
+      "social": "@AtlaxTech",
+      "socialMark": "GH",
+      "socialUrl": "https://github.com/AtlaxTech",
+      "location": "Xi'an, China"
+    }
+  }
 };
+
+export const historicalNotes = [
+  {
+    "id": "note-02",
+    "slug": "agent-matrix-does-not-equal-company",
+    "month": "2026 / 06",
+    "researchWindow": "2026 / 06",
+    "publishedAt": "2026-06-27",
+    "title": "一人公司 + AI Agents 矩阵 = 自动赚钱？",
+    "summary": "Agent 在个人生产力提升上确实有价值，但「多 Agent 自动赚钱」大概率是过度包装。",
+    "type": "Field Note",
+    "status": "Published",
+    "tags": [
+      "AI Agent",
+      "一人公司",
+      "独立开发",
+      "AI 工作流"
+    ],
+    "method": "实践反思 · 概念澄清",
+    "signal": "Agent 适合确定性流程，不适合商业闭环",
+    "question": "哪些环节必须留给人做判断？",
+    "sourceLink": "https://www.xiaohongshu.com/explore/6a3eb0000000000017008ab5?xsec_token=ABtK_DtGW4dM56i7cRiJO-5gW-whDYJztfxS8R6BG44Dc=&xsec_source=pc_user",
+    "relatedWorkSlugs": [
+      "harness-armor",
+      "agent-dock"
+    ]
+  },
+  {
+    "id": "note-04",
+    "slug": "openai-vs-anthropic-product-rhythm",
+    "month": "2026 / 05",
+    "researchWindow": "2026 / 05",
+    "plannedPublish": "Pending final fact check",
+    "title": "OpenAI 和 Anthropic 争的不是模型参数，而是谁先占住工作流",
+    "summary": "模型新闻越来越密集，真正值得比较的不是参数榜单，而是产品正在接管写作、编程、研究与协作中的哪些入口。",
+    "type": "News Analysis",
+    "status": "Draft",
+    "tags": [
+      "OpenAI",
+      "Anthropic",
+      "ChatGPT",
+      "Claude",
+      "工作流"
+    ],
+    "method": "官方更新核对 · 工作流映射",
+    "signal": "竞争焦点从单次回答迁移到持续任务",
+    "question": "一次模型更新究竟改变了哪段真实工作流？",
+    "sourceLink": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+    "relatedWorkSlugs": [
+      "harness-armor"
+    ]
+  },
+  {
+    "id": "note-05",
+    "slug": "ai-model-news-is-not-enough",
+    "month": "2026 / 06",
+    "researchWindow": "2026 / 06",
+    "publishedAt": "2026-07-01",
+    "title": "GPT-5.6发布了，然后呢？",
+    "summary": "AI 模型新闻铺天盖地，但普通人真正该关心的是：跑分是否靠谱、报道的能力是不是自己用的能力、以及实际成本是涨了还是跌了。",
+    "type": "News Analysis",
+    "status": "Published",
+    "tags": [
+      "AI News",
+      "模型发布",
+      "产品入口",
+      "技术转译"
+    ],
+    "method": "新闻拆解 · 用户影响评估",
+    "signal": "参数叙事正在让位于使用方式与入口变化",
+    "question": "这次更新让普通用户多做成了什么，还是只多记住了一个名字？",
+    "sourceLink": "https://www.xiaohongshu.com/explore/6a43f9a5000000001700a63f?app_platform=ios&app_version=9.25&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBteAwjda3YQQ1_SrpUP8-Dv5zvyIwsyW1qkcRqBCmqEQ%3D&author_share=1&xhsshare=CopyLink&shareRedId=N0w4ODU3Nj82NzUyOTgwNjY0OTc9Njg-&apptime=1782841461&share_id=ff070fba9316435796edfaacd014d161",
+    "relatedWorkSlugs": []
+  },
+  {
+    "id": "note-07",
+    "slug": "what-to-ask-after-ai-product-goes-viral",
+    "month": "2026 / 04",
+    "researchWindow": "2026 / 04",
+    "title": "一个 AI 产品爆火后，我们到底应该问什么？",
+    "summary": "热点不是选题本身。编辑真正要回答的是：它是否真实有用、是否改变工作流，以及普通人为什么需要关心。",
+    "type": "APPSO Sample",
+    "status": "Backlog",
+    "tags": [
+      "AI Product",
+      "Editorial Judgment",
+      "APPSO Sample",
+      "热点分析"
+    ],
+    "method": "热点筛选 · 产品判断框架",
+    "signal": "传播速度与产品价值正在被混为一谈",
+    "question": "热度消失以后，用户还会留下什么？",
+    "sourceLink": "",
+    "relatedWorkSlugs": []
+  },
+  {
+    "id": "note-08",
+    "slug": "why-ai-tools-are-abandoned-after-two-days",
+    "month": "2026 / 03",
+    "researchWindow": "2026 / 03",
+    "title": "为什么很多 AI 工具用两天就被放弃？",
+    "summary": "很多 AI 工具并非能力不够，而是无法进入用户已有工作流，最终输给迁移成本、信任成本与结果整理成本。",
+    "type": "Product Backlog",
+    "status": "Backlog",
+    "tags": [
+      "AI Product",
+      "Retention",
+      "User Workflow",
+      "产品判断"
+    ],
+    "method": "用户路径 · 留存摩擦拆解",
+    "signal": "惊艳的首次体验没有转化为重复使用",
+    "question": "用户第二天为什么还要回来？",
+    "sourceLink": "",
+    "relatedWorkSlugs": []
+  },
+  {
+    "id": "note-12",
+    "slug": "karpathy-llm-wiki-and-personal-knowledge-base",
+    "month": "2026 / 04",
+    "researchWindow": "2026 / 04",
+    "plannedPublish": "Ready for editorial review",
+    "title": "从 Karpathy 的 LLM Wiki 想到：个人知识库不是仓库，而是训练场",
+    "summary": "个人知识库的重点不是收藏更多内容，而是让资料持续被整理、被提问、被关联，并再次进入人的思考。",
+    "type": "Knowledge System",
+    "status": "Ready to publish",
+    "tags": [
+      "Karpathy",
+      "LLM Wiki",
+      "Personal Knowledge Base",
+      "MindDock"
+    ],
+    "method": "来源核对 · 个人系统复盘",
+    "signal": "知识管理从存储转向持续编译与复用",
+    "question": "被保存的内容，如何真正变成下一次判断的材料？",
+    "sourceLink": "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f",
+    "relatedWorkSlugs": [
+      "minddock"
+    ]
+  },
+  {
+    "id": "note-13",
+    "slug": "ai-bubble-us-debt-crisis-2008",
+    "month": "2026 / 06",
+    "researchWindow": "2026 / 06",
+    "publishedAt": "2026-06-30",
+    "title": "AI泡沫破裂+美债危机=比2008更惨？",
+    "summary": "高志凯预言2026年底到2027年上半年可能爆发比2008更严重的金融危机。搜了三天数据后，发现美债、AI泡沫和私人信贷三个脆弱点确实在共振。",
+    "type": "Economic Analysis",
+    "status": "Draft",
+    "tags": [
+      "AI泡沫",
+      "美债危机",
+      "金融危机",
+      "经济分析",
+      "内容实验"
+    ],
+    "method": "数据核查 · 观点整理",
+    "signal": "AI 投入产出失衡、美债利息压力与私人信贷违约率上升正在形成共振",
+    "question": "如果高志凯的预言成真，普通人现在该做什么准备？",
+    "sourceLink": "",
+    "relatedWorkSlugs": []
+  },
+  {
+    "id": "note-14",
+    "slug": "knowledge-base-is-not-warehouse",
+    "month": "2026 / 05",
+    "researchWindow": "2026 / 05",
+    "publishedAt": "2026-05-28",
+    "title": "我花了半年才想明白的事——知识库不是仓库",
+    "summary": "从 Obsidian 装修工到真正搭建自生长知识库的完整记录，围绕 Karpathy LLM Wiki 的三层架构反思个人实践中的三个错误与三根心脉。",
+    "type": "Field Note",
+    "status": "Published",
+    "tags": [
+      "知识管理",
+      "LLM Wiki",
+      "个人知识库",
+      "MindDock"
+    ],
+    "method": "个人复盘 · 知识库实践",
+    "signal": "知识库的价值从存储转向持续复用",
+    "question": "收藏的东西，怎么才能重新进入思考？",
+    "sourceLink": "",
+    "relatedWorkSlugs": []
+  },
+  {
+    "id": "note-15",
+    "slug": "openclaw-control-and-asset-defense",
+    "month": "2026 / 03",
+    "researchWindow": "2026 / 03",
+    "publishedAt": "2026-03-30",
+    "title": "当AI开始替你做事——OpenClaw爆火背后的控制问题与资产保卫战",
+    "summary": "从 OpenClaw 爆红看 Agent 时代控制权、安全边界与用户资产保护的真实挑战。",
+    "type": "Agent Security",
+    "status": "Published",
+    "tags": [
+      "AI Agent",
+      "OpenClaw",
+      "安全风险",
+      "控制设计",
+      "资产保护"
+    ],
+    "method": "事件追踪 · 风险框架拆解",
+    "signal": "Agent 能力越底层，控制设计与资产保护越紧迫",
+    "question": "当 AI 能真正替你做事时，谁来守住你的资产边界？",
+    "sourceLink": "",
+    "relatedWorkSlugs": []
+  }
+];

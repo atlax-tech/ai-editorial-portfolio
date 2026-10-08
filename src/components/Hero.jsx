@@ -35,8 +35,8 @@ export function Hero({ data }) {
             查看精选项目
             <ArrowIcon />
           </a>
-          <Link className="hero-action" to="/notes/ai-model-news-is-not-enough">
-            阅读最新文章
+          <Link className="hero-action" to="/notes/ai-agent-control-problem">
+            阅读 Agent 技术思考
             <ArrowIcon />
           </Link>
           <Link className="hero-action" to="/archive">
